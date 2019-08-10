@@ -10,5 +10,5 @@ if (!$conn) {
     die("Conexión Fallida, por favor comunicate con el administrador: " . mysqli_connect_error());
 }
 echo "Conexión mela";
-mysqli_close($conn);
+
 ?>

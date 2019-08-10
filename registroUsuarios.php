@@ -32,9 +32,33 @@ if($distancia == '10K'){
 }
 
 
-//$sql = "INSERT INTO `usuarios` (`nombreUsuario`, `apellidosUsuario`, `distancia`, `valorPagar`, `correoElectronico`, `tipoIdentificacion`, `numeroIdentificacion`, `fechaNacimiento`, `sexo`, `telefono`, `pais`,`departamento`, `ciudad`, `tipoSangre`, `entidadSalud`, `tallaCamisa`,`contactoEmergenciaNombre`, `contactoEmergenciaTelefono`, `estadoIncripcion`, `estadoKit`)VALUES ('$nombre','$apellidos','$distancia','$valorPagar','$correo','$tipoDocumento','$numeroIdentificacion','$fechaNacimiento','$sexo','$telefono','$pais','$departamento','$ciudad','$tipoSangre','$seguroMedico','$tallaCamisa','$nombreContactoEmergencia','$telefonoContactoEmergencia','$estadoInscripcion','$estadoKit')";
-$sql = "INSERT INTO ejemplo values ('carlos')";
-$conn->query($sql) or die ("Fallo en la hjhjhjhj");
+$sql = "INSERT INTO `usuarios` (`nombreUsuario`, `apellidosUsuario`, `distancia`, `valorPagar`, `correoElectronico`, `tipoIdentificacion`, `numeroIdentificacion`, `fechaNacimiento`, `sexo`, `telefono`, `pais`,`departamento`, `ciudad`, `tipoSangre`, `entidadSalud`, `tallaCamisa`,`contactoEmergenciaNombre`, `contactoEmergenciaTelefono`, `estadoIncripcion`, `estadoKit`)VALUES ('$nombre','$apellidos','$distancia','$valorPagar','$correo','$tipoDocumento','$numeroIdentificacion', NULL,'$sexo','$telefono','$pais','$departamento','$ciudad','$tipoSangre','$seguroMedico','$tallaCamisa','$nombreContactoEmergencia','$telefonoContactoEmergencia','$estadoInscripcion','$estadoKit')";
+
+//$sql = "SELECT * FROM ejemplo";
+/* if ($conn->query("CREATE TEMPORARY TABLE myCity LIKE City") === TRUE) {
+    printf("Se creó con éxtio la tabla myCity.\n");
+} */
+//$conn->query($sql) or die (mysqli_error($conn));
+
+//$sql = "SELECT * FROM usuarios";
+$resultado = $conn->query($sql) or die (mysqli_error($conn));
+/* while($fila=$resultado->fetch_assoc()){
+    echo "<tr> ";
+        echo "<td>"; echo $fila['idusuarios']; echo "</td>";
+        echo "<td>"; echo $fila['nombreUsuario']; echo "</td>";
+        echo "<td>"; echo $fila['apellidosUsuario']; echo "</td>";
+    echo "</tr> "; 
+    
+
+}*/
+
+// Se abre una sesión.
+session_start();
+ 
+$_SESSION['usuario'] = $numeroIdentificacion;
+ 
+header('Location: estadoInscripcion.php');
+
 
 
 ?>
