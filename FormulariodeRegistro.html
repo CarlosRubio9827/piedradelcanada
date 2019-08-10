@@ -6,15 +6,19 @@
 <title>Registro - Piedra Del Canadá: El Órigen</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<script type="text/javascript" src="Jquery/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
+ 
 </head>
 <body style="width:50%;margin:auto;min-width:600px;max-width:1000px">
 	
-	<img id="top" src="top.png" alt="">
-	<div id="form_container">
+	
+	<div>
 	
 		<h4 style=" text-align: center;"><a>Registro - Piedra Del Canadá: El Órigen</a></h4>
-        <form id="formularioRegistro"   method="post" action="validarRegistro.php">
+        <form id="formularioRegistro"   method="post" action="registroUsuarios.php">
   			<img  style="display:block; margin:auto;" height="150"  width="150" src="http://www.piedradelcanadatr.com/wp-content/uploads/2018/08/PIEDRA-DEL-CANADA-PSD-2018-2-1024x1024.png"/>
 			 
  			<ul >
@@ -32,7 +36,7 @@
 				<hr>
 			 <div class="form-group"> <!-- Distancia -->
         <label for="state_id" class="control-label"><b>Seleccione Su Distancia <span style="color:red;">*</span></b></label>
-        <select class="form-control" id="idDistancia">
+        <select class="form-control" name="distancia" id="distancia">
             <option value="10K">10K - $56.000</option>
             <option value="21K">21K - $66.000</option>
             <option value="30K">30K - $76.000</option>
@@ -46,28 +50,28 @@
 	</div>
 
 	<div class="form-group"> <!-- Nombres -->
-        <label for="idNombre" class="control-label"> <b>Nombre(s) <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="idNombre" name="idNombre" placeholder="Escriba su nombre" >
+        <label for="nombre" class="control-label"> <b>Nombre(s) <span style="color:red;">*</span></b> </label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba su nombre" >
 	</div>
 	
 	<div class="form-group"> <!-- Apellido -->
-        <label for="idApellido" class="control-label"> <b>Apellidos <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="idApellido" name="idApellido" placeholder="Escriba su apellido" >
+        <label for="apellido" class="control-label"> <b>Apellidos <span style="color:red;">*</span></b> </label>
+        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Escriba su apellido" >
 	</div>
 
 	<div class="form-group"> <!-- Correo Electronico -->
-        <label for="idCorreo" class="control-label"> <b>Correo Electrónico <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="idCorreo" name="idCorreo" placeholder="Escriba su correo electrónico" >
+        <label for="correo" class="control-label"> <b>Correo Electrónico <span style="color:red;">*</span></b> </label>
+        <input type="text" class="form-control" id="correo" name="correo" placeholder="Escriba su correo electrónico" >
 	</div>
 
 	<div class="form-group"> <!-- Correo Electronico -->
-        <label for="idConfirmacionCorreo" class="control-label"> <b>Confirmación Correo Electrónico <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="idConfirmacionCorreo" name="idConfirmacionCorreo" placeholder="Vuelva a escribir su correo electrónico" >
+        <label for="confirmacionCorreo" class="control-label"> <b>Confirmación Correo Electrónico <span style="color:red;">*</span></b> </label>
+        <input type="text" class="form-control" id="confirmacionCorreo" name="confirmacionCorreo" placeholder="Vuelva a escribir su correo electrónico" >
 	</div>
 	
 	<div class="form-group"> <!-- Tipo de Documento -->
-        <label for="state_id" class="control-label"><b>Tipo de Identificación <span style="color:red;">*</span></b></label>
-        <select class="form-control" id="idTipoIdentificacion">
+        <label for="tipoIdentificacion" class="control-label"><b>Tipo de Identificación <span style="color:red;">*</span></b></label>
+        <select class="form-control" name="tipoIdentificacion" id="tipoIdentificacion">
             <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
             <option value="Cédula de Ciudadania">Cédula de Ciudadania</option>
             <option value="Pasaporte">Pasaporte</option>
@@ -75,47 +79,47 @@
 	</div>
 
 	<div class="form-group"> <!-- Número de Identificación -->
-        <label for="idNumeroIdentificacion" class="control-label"> <b>Número de Identificación <span style="color:red;">*</span></b> </label>
-        <input type="number" class="form-control" id="idNumeroIdentificacion" name="idNumeroIdentificacion" placeholder="Escriba su número de identificación" >
+        <label for="numeroIdentificacion" class="control-label"> <b>Número de Identificación <span style="color:red;">*</span></b> </label>
+        <input type="number" class="form-control" id="numeroIdentificacion" name="numeroIdentificacion" placeholder="Escriba su número de identificación" >
 	</div>
 
 	<div class="form-group"> <!-- Fecha de Nacimiento -->
-		<label for="idFechaNacimiento" class="control-label"> <b>Fecha de Nacimiento <span style="color:red;">*</span></b> </label>
+		<label for="fechaNacimiento" class="control-label"> <b>Fecha de Nacimiento <span style="color:red;">*</span></b> </label>
 		<br>
-		<input type="date" class="form-control" name="fecha" min="1930-01-01" max="2018-05-25" step="2">
+		<input type="date" class="form-control" name="fechaNacimiento" min="1930-01-01" max="2018-05-25" step="2">
 	</div>
 
 	<div class="form-group"> <!-- Sexo -->
-        <label for="idSexo" class="control-label"><b>Sexo<span style="color:red;">*</span></b></label>
-        <select class="form-control" id="idSexo">
+        <label for="sexo" class="control-label"><b>Sexo<span style="color:red;">*</span></b></label>
+        <select class="form-control" id="sexo" name="sexo">
             <option value="Femenino">Femenino</option>
             <option value="Masculino">Masculino</option>
         </select>                    
 	</div>
 
 	<div class="form-group"> <!-- Telefono -->
-        <label for="idTelefono" class="control-label"> <b>Teléfono <span style="color:red;">*</span></b> </label>
-        <input type="number" class="form-control" id="idTelefono" name="idTelefono" placeholder="Escriba número de teléfono" >
+        <label for="telefono" class="control-label"> <b>Teléfono <span style="color:red;">*</span></b> </label>
+        <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Escriba número de teléfono" >
 	</div>
 
 	<div class="form-group"> <!-- País -->
-        <label for="idPais" class="control-label"> <b>País <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="idPais" name="idPais" placeholder="" >
+        <label for="pais" class="control-label"> <b>País <span style="color:red;">*</span></b> </label>
+        <input type="text" class="form-control" id="pais" name="pais" placeholder="" >
 	</div>
 
 	<div class="form-group"> <!-- Departamento -->
-        <label for="idDepartamento" class="control-label"> <b>Departamento - Región - Provincia <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="idDepartamento" name="idDepartamento" placeholder="" >
+        <label for="departamento" class="control-label"> <b>Departamento - Región - Provincia <span style="color:red;">*</span></b> </label>
+        <input type="text" class="form-control" id="departamento" name="departamento" placeholder="" >
 	</div>
 
 	<div class="form-group"> <!-- Ciudad -->
-        <label for="idCiudad" class="control-label"> <b>Ciudad <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="idCiudad" name="idCiudad" placeholder="" >
+        <label for="ciudad" class="control-label"> <b>Ciudad <span style="color:red;">*</span></b> </label>
+        <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="" >
 	</div>
 	
 	<div class="form-group"> <!-- Tipo de Sangre -->
-        <label for="idTipoSangre" class="control-label"><b>Tipo de Sangre<span style="color:red;">*</span></b></label>
-        <select class="form-control" id="idTipoSangre">
+        <label for="tipoSangre" class="control-label"><b>Tipo de Sangre<span style="color:red;">*</span></b></label>
+        <select class="form-control" name="tipoSangre" id="tipoSangre">
             <option value="A-">A-</option>
             <option value="A+">A+</option>
             <option value="B-">B-</option>
@@ -128,13 +132,13 @@
 	</div>   
 	
 	<div class="form-group"> <!-- Ciudad -->
-        <label for="idSeguroMedico" class="control-label"> <b>Entidad de Salud / Seguro Médico <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="idSeguroMedico" name="idSeguroMedico" placeholder="" >
+        <label for="seguroMedico" class="control-label"> <b>Entidad de Salud / Seguro Médico <span style="color:red;">*</span></b> </label>
+        <input type="text" class="form-control" id="seguroMedico" name="seguroMedico" placeholder="" >
 	</div>
 
 	<div class="form-group"> <!-- Tipo de Sangre -->
-        <label for="idTallaCamisa" class="control-label"><b>Talla Camisa<span style="color:red;">*</span></b></label>
-        <select class="form-control" id="idTallaCamisa">
+        <label for="tallaCamisa" class="control-label"><b>Talla Camisa<span style="color:red;">*</span></b></label>
+        <select class="form-control" name="tallaCamisa" id="tallaCamisa">
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
@@ -153,13 +157,13 @@
 	</div>
 
 	<div class="form-group"> <!-- Nombre Contacto Emergencia -->
-        <label for="idNombreContactoEmergencia" class="control-label"> <b>Nombre Contacto Emergencia </b> </label>
-        <input type="text" class="form-control" id="idNombreContactoEmergencia" name="idNombreContactoEmergencia" placeholder="" >
+        <label for="nombreContactoEmergencia" class="control-label"> <b>Nombre Contacto Emergencia </b> </label>
+        <input type="text" class="form-control" id="nombreContactoEmergencia" name="nombreContactoEmergencia" placeholder="" >
 	</div>
 
 	<div class="form-group"> <!-- Teléfono Contacto Emergencia -->
-        <label for="idTelefonoContactoEmergencia" class="control-label"> <b>Teléfono Contacto Emergencia</b> </label>
-        <input type="text" class="form-control" id="idTelefonoContactoEmergencia" name="idTelefonoContactoEmergencia" placeholder="" >
+        <label for="telefonoContactoEmergencia" class="control-label"> <b>Teléfono Contacto Emergencia</b> </label>
+        <input type="text" class="form-control" id="telefonoContactoEmergencia" name="telefonoContactoEmergencia" placeholder="" >
 	</div>
 
 	<hr>
@@ -168,7 +172,7 @@
 	</div>
 
 	<div class="form-group">
-		<textarea disabled name="idTerminoCondiciones" id="idTerminoCondiciones" cols="87" rows="10">
+		<textarea disabled name="terminoCondiciones" id="terminoCondiciones" cols="87" rows="10">
 		Con el diligenciamiento, firma de la presente declaración de aceptación, presencia en el evento y porte del número de competencia entiendo y acepto los términos y condiciones de participación en la carrera, aquí descritos, acepto las condiciones de inscripción y declaro que reconozco que este evento es una actividad potencialmente peligrosa y me acojo a su reglamento de participación.
 
 Declaro que en forma libre y voluntaria he decidido participar en la carrera, que estoy en perfectas condiciones físicas y de salud, así como adecuadamente entrenado y preparado para participar en la misma y que estoy afiliado al régimen de salud, prestado por la EPS indicada al pie de mi firma. Aceptare cualquier decisión de la organización de la carrera sobre mi participación y entiendo que la inscripción a la carrera me da el derecho a participar en la competencia, bajo ninguna circunstancia en cualquier evento en que NO pueda participar en la carrera o reclamar el kit de competencia, en las fechas establecidas por la organización, no podré ni reclamar el kit de competencia, ni exigir el reembolso del valor de la inscripción.
@@ -193,15 +197,40 @@ Entiendo y acepto que para el día de la competencia es obligatorio portar el n�
 	<hr>
 
 	<div class="form-group"> <!-- Registramer - Botón -->
-        <button type="submit" class="btn btn-primary">Registrarme</button>
+        <button id="btnEnviar" type="submit" class="btn btn-primary">Registrarme</button>
 	</div>     
 
 			</ul>
 		</form>	
+
+		<script>
+
+			// $(document).ready(function(){
+			// 	$("#btnEnviar").click(function(){
+			// 		var nombre = $("#nombre").val();
+			// 		var apellido = $("#idApellido").val();
+			// 		var correo = $("#correo").val();
+	
+			// 		if(nombre == ""){
+			// 			Swal.fire(
+			// 			'The Internet?',
+			// 			'That thing is still around?',
+			// 			'question'
+			// 			)
+			// 			return false;
+			// 		}
+	
+		//	});
+		//	});
+	
+		</script>
+
 		<div style="text-align:center;" id="footer">
 			Desarrollado por <a  href="http://www.rupinsi.com">Rupinsi</a>
 		</div>
 	</div>
-	<img id="bottom" src="bottom.png" alt="">
+
 	</body>
 	</html>
+
+	
