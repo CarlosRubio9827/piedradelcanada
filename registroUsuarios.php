@@ -55,7 +55,7 @@ $resultado = $conn->query($sql) or die (mysqli_error($conn));
 // Se abre una sesión.
 session_start();
  
-$_SESSION['usuario'] = $numeroIdentificacion;
+$_SESSION['usuario'] = "$numeroIdentificacion";
  
 header('Location: estadoInscripcion.php');
 
