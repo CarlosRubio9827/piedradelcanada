@@ -205,6 +205,29 @@ Entiendo y acepto que para el d√≠a de la competencia es obligatorio portar el n√
 
 		<script>
 
+    $(function(){
+        $('#formularioRegistro').validate({
+            rules :{
+                mi_email : {
+                    required : true, //para validar campo vacio
+                    email    : true  //para validar formato email
+                },
+                mi_nombre : {
+                    required : true,
+                    minlength : 3, //para validar campo con minimo 3 caracteres
+                    maxlength : 9  //para validar campo con maximo 9 caracteres
+                },
+                mi_edad : {
+                    required : true,
+                    number : true   //para validar campo solo numeros
+                },
+                mi_pais : {
+                    required :true,
+                }
+
+            }
+        });
+    }
 			// $(document).ready(function(){
 			// 	$("#btnEnviar").click(function(){
 			// 		var nombre = $("#nombre").val();
