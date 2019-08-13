@@ -9,7 +9,7 @@
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 <script type="text/javascript" src="Jquery/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
+<script type="text/javascript" src="Jquery/jquery.validate.min.js"></script> 
  
 </head>
 <body style="width:50%;margin:auto;min-width:600px;max-width:1000px">
@@ -18,22 +18,19 @@
 	<div>
 	
 		<h4 style=" text-align: center;"><a>Registro - Piedra Del Canadá: El Órigen</a></h4>
-        <form id="formularioRegistro"   method="post" action="registroUsuarios.php">
+        <form id="formularioRegistro" name="formularioRegistro" method="post" action="registroUsuarios.php">
   			<img  style="display:block; margin:auto;" height="150"  width="150" src="http://www.piedradelcanadatr.com/wp-content/uploads/2018/08/PIEDRA-DEL-CANADA-PSD-2018-2-1024x1024.png"/>
-			 
- 			<ul >
 
 			<div class="form-group">
 				<p style="text-align: center;"><b>Datos de la Inscripción</b></p>
 			</div>
 
-
 			<div class="form-group">
 				<h6>Los campos marcados con <span style="color:red;">*</span> son obligatorios</h6>
 			</div>
 
-			 
-				<hr>
+			<hr>
+
 			<div class="form-group"> <!-- Distancia -->
 				<label for="state_id" class="control-label"><b>Seleccione Su Distancia <span style="color:red;">*</span></b></label>
 				<select class="form-control" name="distancia" id="distancia">
@@ -43,7 +40,7 @@
 				</select>                    
 			</div>
 	
-	<hr>
+			<hr>
 	
 	<div class="form-group">
 		<label class="control-label"><b>Información Personal</b></label>
@@ -51,17 +48,17 @@
 
 	<div class="form-group"> <!-- Nombres -->
         <label for="nombre" class="control-label"> <b>Nombre(s) <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba su nombre" >
+        <input type="text" class="form-control validate" id="nombre" required  name="nombre" placeholder="Escriba su nombre" >
 	</div>
 	
 	<div class="form-group"> <!-- Apellido -->
         <label for="apellido" class="control-label"> <b>Apellidos <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Escriba su apellido" >
+        <input type="text" class="form-control validate" id="apellido"  required name="apellido" placeholder="Escriba su apellido" >
 	</div>
 
 	<div class="form-group"> <!-- Correo Electronico -->
         <label for="correo" class="control-label"> <b>Correo Electrónico <span style="color:red;">*</span></b> </label>
-        <input type="text" class="form-control" id="correo" name="correo" placeholder="Escriba su correo electrónico" >
+        <input type="email" class="form-control" id="correo" required  name="correo" placeholder="Escriba su correo electrónico" >
 	</div>
 
 	<div class="form-group"> <!-- Correo Electronico -->
@@ -167,6 +164,7 @@
 	</div>
 
 	<hr>
+
 	<div class="form-group">
 		<label class="control-label"><b>Términos y Condiciones de participación carrera atlética y declaración de exoneración de responsabilidades y autorización.</b></label>
 	</div>
@@ -197,56 +195,32 @@ Entiendo y acepto que para el día de la competencia es obligatorio portar el n�
 	<hr>
 
 	<div class="form-group"> <!-- Registramer - Botón -->
-        <button id="btnEnviar" type="submit" class="btn btn-primary">Registrarme</button>
+        <button id="btnEnviar"  class="btn btn-primary">Registrarme</button>
 	</div>     
 
-			</ul>
-		</form>	
+</form>	
 
-		<script>
+ 
+<script type="text/javascript">
+$(document).ready(function(){
+	
+      $("#formularioRegistro").validate({
 
-    $(function(){
-        $('#formularioRegistro').validate({
-            rules :{
-                mi_email : {
-                    required : true, //para validar campo vacio
-                    email    : true  //para validar formato email
-                },
-                mi_nombre : {
-                    required : true,
-                    minlength : 3, //para validar campo con minimo 3 caracteres
-                    maxlength : 9  //para validar campo con maximo 9 caracteres
-                },
-                mi_edad : {
-                    required : true,
-                    number : true   //para validar campo solo numeros
-                },
-                mi_pais : {
-                    required :true,
-                }
+			rules: {
+			nombre: { required: true, minlength: 2},
+			apellido: { required: true, minlength: 2}
+			},
+			submitHandler: function(form) {
+			$(form).ajaxSubmit();
+		}
 
-            }
-        });
-    }
-			// $(document).ready(function(){
-			// 	$("#btnEnviar").click(function(){
-			// 		var nombre = $("#nombre").val();
-			// 		var apellido = $("#idApellido").val();
-			// 		var correo = $("#correo").val();
-	
-			// 		if(nombre == ""){
-			// 			Swal.fire(
-			// 			'The Internet?',
-			// 			'That thing is still around?',
-			// 			'question'
-			// 			)
-			// 			return false;
-			// 		}
-	
-		//	});
-		//	});
-	
-		</script>
+	});
+ 
+});
+</script>
+
+
+		 
 
 		<div style="text-align:center;" id="footer">
 			Desarrollado por <a  href="http://www.rupinsi.com">Rupinsi</a>
