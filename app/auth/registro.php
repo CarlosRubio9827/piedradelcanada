@@ -1,6 +1,6 @@
 <?php
 session_start();
-$titulo = "Registrarse";
+$titulo = "Registrarme";
 $actual = "registro";
 require_once("../layout/header.php");
 ?>
@@ -10,10 +10,10 @@ require_once("../layout/header.php");
 
 <style type="text/css">
 body {
-    background: url("../../assets/img/guest/register/background.jpg") center center;
+    background: url("../../assets/img/guest/register/background.jpg")repeat center center fixed ;
     background-size: auto;
 }
-.card{
+.card{ 
     background-color: rgba(0, 0, 0, 0.7) !important;
 }
 input,.md-form > small,.select2-selection__rendered{
@@ -54,7 +54,7 @@ require_once("../layout/css.php");
                                 <input type="hidden" required value="register" name="method">
 
                                 <h6 class="white-text">Los campos marcados con (<span class="obligatorio">*</span>) son obligatorios</h6>
-                                     
+                                      
                                 <div class="form-row">
                                     <!-- Grid row -->
                                     <div class="col-md-12">

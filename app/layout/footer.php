@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION['message']){
+if(@$_SESSION['message']){
 ?>
 <script type="text/javascript">
 $(document).ready(function(){

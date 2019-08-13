@@ -5,7 +5,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="javascript:void();" >
-        <strong> <i class="fas fa-mountain mr-2"></i>Piedra del Canada</strong>
+        <strong> <i class="fas fa-mountain mr-2"></i>Piedra del Canada: El Órigen</strong>
       </a>
 
       <!-- Collapse -->
@@ -35,7 +35,7 @@
         <ul class="navbar-nav nav-flex-icons">
                  
         <?php 
-         if($_SESSION['usuario']){
+         if(@$_SESSION['usuario']){
           $user = json_decode($_SESSION['usuario']);
         ?>
            <li class="nav-item dropdown active">

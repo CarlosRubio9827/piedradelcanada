@@ -1,12 +1,12 @@
 <?php
 include "require/pdo.php";
 $method = $_POST['method'];
-if($method == "logout"){
+if(@$method == "logout"){
     session_start(); 
     session_destroy();
     header('Location: ../app/auth/login.php');
 }
-else if($method == "login"){
+else if(@$method == "login"){ 
     $db = new PDO_Connect;
     $db->connect();
     $email = $_POST['email'];
@@ -24,7 +24,7 @@ if($usuario){
     $_SESSION['message_type'] = "error";
     header('Location: ../app/auth/login.php');
 }
-}else if($method == "register"){
+}else if(@$method == "register"){
     $estadoInscripcion = 'registrado';
     $estadoKit = "Sin entregar";
     $distancia = $_POST['distancia'];

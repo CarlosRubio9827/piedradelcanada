@@ -1,9 +1,9 @@
 <?php
  
  define('DB_USER', 'root');
- define('DB_PWD', '');
+ define('DB_PWD', 'root');
  define('DB_HOST', 'localhost');
- define('DB', 'mydb');
+ define('DB', 'piedradelcanada');
  define('DB_TYPE', 'mysql');
 
 class PDO_Connect

@@ -70,7 +70,7 @@ require_once("../layout/css.php");
                                    <div class="white-text">
                                         <h1 class="h1-responsive font-weight-bold">¡Regístrate ahora! </h1>
                                         <hr class="hr-light">
-                                        <h6 class="text-intro">¿Aún no tienes cuenta?, regístrate en simples pasos y empieza a disfrutar de los servicios ofrecidos por IRAPP.</h6>
+                                        <h6 class="text-intro">¿Aún no te has registrado?, regístrate en simples pasos para que no te pierdas esta espectacular carrera.</h6>
                                         <br>
                                         <a href="registro.php" class="btn btn-outline-white"><i class="fas fa-user-plus mr-2"></i>Registrarse</a>
                                     </div>
