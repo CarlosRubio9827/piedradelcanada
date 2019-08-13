@@ -1,6 +1,7 @@
 <?php
-$titulo = "Piedra del Canadá: El órigen";
-$actual = "Piedra del Canadá: El órigen";
+session_start();
+$titulo = "Registrarse";
+$actual = "registro";
 require_once("../layout/header.php");
 ?>
 <link rel="stylesheet" href="../../assets/css/guest/auth/style.css" type="text/css">
@@ -9,8 +10,8 @@ require_once("../layout/header.php");
 
 <style type="text/css">
 body {
-    background: url("../../assets/img/guest/register/background.jpg")no-repeat center center;
-    background-size: cover;
+    background: url("../../assets/img/guest/register/background.jpg") center center;
+    background-size: auto;
 }
 .card{
     background-color: rgba(0, 0, 0, 0.7) !important;
@@ -44,15 +45,16 @@ require_once("../layout/css.php");
                             <div class="card-body">
                                 <!--Header-->
                                 <div class="text-center">
-                                    <h3 class="white-text"> Registrarse</h3>
+                                    <h3 class="white-text"><i class="fas fa-user-plus mr-2"></i>Registrarse</h3>
                                     <hr class="hr-light">
                                 </div>
                                 
-                                <form id="register_form" method="POST" action="../../controllers/registroUsuarios.php" accept-charset="UTF-8">
+                                <form id="register_form" method="POST" action="../../controllers/auth.php" accept-charset="UTF-8">
                                   
-                                    
+                                <input type="hidden" required value="register" name="method">
+
                                 <h6 class="white-text">Los campos marcados con (<span class="obligatorio">*</span>) son obligatorios</h6>
-                                   
+                                     
                                 <div class="form-row">
                                     <!-- Grid row -->
                                     <div class="col-md-12">
@@ -71,16 +73,48 @@ require_once("../layout/css.php");
                                     <!-- Grid column -->
                                     </div>
                                 </div>
-                                <hr>
+                         
+
+                                <div class="form-row">
+                                <div class="col-1">
+                                <i class="fas fa-id-card prefix-select white-text"></i>
+
+                                </div>
+                                        <div class="col-md-5 col-11">
+                                            <!-- Material input -->
+                                            <div class="md-form">
+                                            <select required id="tipoIdentificacion" name="tipoIdentificacion">
+                                            <option value="" disabled selected>Selecciona una opción</option>
+                                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                                                <option value="Cédula de Ciudadania">Cédula de Ciudadania</option>
+                                                <option value="Pasaporte">Pasaporte</option>
+                                            </select>
+                                            </div>
+                                    
+                                        <!-- Grid column -->
+                                        </div>
+
+                                        <div class="col-md-6">
+                                                <!-- Material input -->
+                                                <div class="md-form">
+                                                    <input type="number" required id="numeroIdentificacion" value="" name="numeroIdentificacion" class="form-control validate">
+                                                    <label for="numeroIdentificacion" data-error="Error" data-success="Correcto">Número identificación <span class="obligatorio">*</span></label>
+                                                </div>
+
+                                        </div>
+
+                                    </div>
+                                        <!-- Grid row -->
+                                              
                                  <!-- Grid row -->
                                  <div class="form-row">
                                             <!-- Grid column -->
                                             <div class="col-md-6">
                                                 <!-- Material input -->
                                                 <div class="md-form">
-                                                    <i class="fas fa-user-tie prefix white-text"></i>
+                                                    <i class="fas fa-running prefix white-text"></i>
                                                     <input type="text" required id="nombre" value="" name="nombre" class="form-control validate">
-                                                    <label for="nombre" data-error="Error" data-success="Correcto">Nombre <span class="obligatorio">*</span></label>
+                                                    <label for="nombre" data-error="Error" data-success="Correcto">Nombre(s) <span class="obligatorio">*</span></label>
                                                 </div>
 
                                             </div>
@@ -97,7 +131,8 @@ require_once("../layout/css.php");
                                             <!-- Grid column -->
                                           
                                     </div>
-                                        <!-- Grid row -->
+
+                                    <!-- Grid row -->
                                     <div class="form-row">
                                           
                                     <div class="col-md-6">
@@ -113,48 +148,22 @@ require_once("../layout/css.php");
                                                 <!-- Material input -->
                                                 <div class="md-form">
                                          <input type="email" required id="confirmarEmail" value="" name="confirmarEmail" class="form-control validate" maxlength="100">
-                                        <label for="confirmarEmail" data-error="Error" data-success="Correcto">Confirmar Email <span class="obligatorio">*</span></label>
+                                        <label for="confirmarEmail" data-error="Error" data-success="Correcto">Confirmar email <span class="obligatorio">*</span></label>
                                         </div> 
                                             </div>
                                           
                                     </div>
                                 <!-- Grid row -->
-                                    <div class="form-row">
-                                       
-                                        <div class="col-md-6">
-                                            <!-- Material input -->
-                                            <div class="md-form">
-                                            <select class="form-control" required id="tipoIdentificacion" name="tipoIdentificacion">
-                                            <option value="" disabled selected>Selecciona una opción</option>
-                                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
-                                                <option value="Cédula de Ciudadania">Cédula de Ciudadania</option>
-                                                <option value="Pasaporte">Pasaporte</option>
-                                            </select>
-                                            </div>
-                                    
-                                        <!-- Grid column -->
-                                        </div>
-
-                                        <div class="col-md-6">
-                                                <!-- Material input -->
-                                                <div class="md-form">
-                                                    <input type="number" required id="numeroIdentificacion" value="" name="numeroIdentificacion" class="form-control validate">
-                                                    <label for="numeroIdentificacion" data-error="Error" data-success="Correcto">Número Identificación <span class="obligatorio">*</span></label>
-                                                </div>
-
-                                        </div>
-
-                                    </div>
-                                        <!-- Grid row -->
                                         
+                              
                                         <!-- Grid row -->
                                     <div class="form-row">
                                               
                                         <div class="col-md-6">
                                             <div class="md-form">
                                                 <i class="prefix far fa-calendar-check white-text"></i>
-                                                <input type="text" id="fechaNacimiento" value="" name="fechaNacimiento" class="form-control validate" maxlength="50">
-                                                <label for="fechaNacimiento" data-error="Error" data-success="Correcto">Fecha de Nacimiento <span class="obligatorio">*</span></label>
+                                                <input required type="text" id="fechaNacimiento" value="" name="fechaNacimiento" class="form-control validate" maxlength="50">
+                                                <label for="fechaNacimiento" data-error="Error" data-success="Correcto">Fecha de nacimiento <span class="obligatorio">*</span></label>
                                             </div>
                                         </div>
 
@@ -245,7 +254,7 @@ require_once("../layout/css.php");
                                                 <!-- Material input -->
                                                 <div class="md-form">
                                                 <input type="text" required id="seguroMedico" value="" name="seguroMedico" class="form-control validate">
-                                                <label for="seguroMedico" data-error="Error" data-success="Correcto">EPS Afiliado<span class="obligatorio">*</span></label>
+                                                <label for="seguroMedico" data-error="Error" data-success="Correcto">EPS afiliado<span class="obligatorio">*</span></label>
                                                 </div> 
                                         </div>
 
@@ -280,7 +289,7 @@ require_once("../layout/css.php");
                                             <div class="col-md-6">
                                             <div class="md-form">
                                                 <input type="text"   id="nombreContactoEmergencia" value="" name="nombreContactoEmergencia" class="form-control  ">
-                                                <label for="nombreContactoEmergencia" data-error="Error" data-success="Correcto">Nombre Contacto </span></label>
+                                                <label for="nombreContactoEmergencia" data-error="Error" data-success="Correcto">Nombre contacto </span></label>
                                                 </div>    
 
                                             </div>
@@ -288,13 +297,17 @@ require_once("../layout/css.php");
                                             <div class="col-md-6">
                                             <div class="md-form">
                                                 <input type="number"   id="numeroContactoEmergencia" value="" name="numeroContactoEmergencia" class="form-control">
-                                                <label for="numeroContactoEmergencia" data-error="Error" data-success="Correcto">Número Contacto</label>
+                                                <label for="numeroContactoEmergencia" data-error="Error" data-success="Correcto">Número contacto</label>
                                                 </div>   
 
                                             </div>
                                         </div>
+                                        
+                                        
 
-                                    
+ 
+
+
                                                 <!-- Grid row -->
                                         <div class="form-row">
                                                 <!-- Grid column -->
@@ -316,24 +329,18 @@ Así mismo faculto a los organizadores para enviar o transferir mis datos a cual
 Entiendo y acepto que para el día de la competencia es obligatorio portar el número de competencia. Acepto los términos y condiciones establecidos en el presente documento, los cuales he entendido y aceptado voluntariamente.
   </p>
 </blockquote>
-
-                <div class="custom-control custom-checkbox">
-
-                <div class="md-form">
-                       <input required type="checkbox" name="terminoCondiciones" class="custom-control-input validate" id="terminosCondiciones">
-                    <label class="custom-control-label white-text" for="terminosCondiciones">Acepto los terminos y condiciones. <span class="obligatorio">*</span></label>
-
-                </div>          
-                 </div>
-
-            </div>
+<div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="terminoCondiciones" name="terminoCondiciones">
+                <label class="custom-control-label white-text" for="terminoCondiciones">Acepto los terminos y condiciones.</label>
+              </div>
+ </div>
                             </div>
                                             <!-- Grid row --> 
                                     
                          
 
                                         <a onclick="validar()" class="btn btn-outline-white hoverable waves-light mt-5 role="button">
-                                            <i class="fas fa-user-plus mr-2"></i>Registrarme</a>
+                                            <i class="fas fa-user-plus mr-2"></i>Registrarse</a>
                                     </form>
                             </div>
                                 </div>
@@ -351,7 +358,7 @@ Entiendo y acepto que para el día de la competencia es obligatorio portar el n�
             <div class="card mb-4 z-depth-5 hoverable">
                 <div class="card-body">
                   
-            <div class="white-text">
+                <div class="white-text">
                 <h1 class="h1-responsive font-weight-bold">¡Consulta tu Estado! </h1>
                 <hr class="hr-light">
                 <h6>¿Ya estás registrado?, inicia sesion y verifica el estado de tu inscripción.</h6>
@@ -377,31 +384,31 @@ require_once("../layout/js.php");
 <script type="text/javascript">
 
 $('#tipoIdentificacion').select2({
-        placeholder: "Tipo de Identificación",
+        placeholder: "Tipo de identificación *",
         theme: "material",
         language: "es"
     });
     
     $('#distancia').select2({
-        placeholder: "Distancia que desea correr",
+        placeholder: "Distancia que desea correr *",
         theme: "material",
         language: "es"
     });
 
     $('#sexo').select2({
-        placeholder: "Seleccione su Sexo",
+        placeholder: "Sexo *",
         theme: "material",
         language: "es"
     });
 
     $('#tipoSangre').select2({
-        placeholder: "Seleccione su Tipo de Sangre",
+        placeholder: "Tipo de sangre *",
         theme: "material",
         language: "es"
     });
 
     $('#tallaCamisa').select2({
-        placeholder: "Seleccione su Talla de Camisa",
+        placeholder: "Talla de camisa *",
         theme: "material",
         language: "es"
     });
@@ -449,8 +456,37 @@ function validar(){
     lang: 'es',
     errorPlacement: function(error, element){
       $(element).parent().after(error);
-		}})){
+		}})){        
+    var email = $("#email").val();
+    var confirmarEmail = $("#confirmarEmail").val();
+    if(email == confirmarEmail){
+if($("#terminoCondiciones").prop("checked") == true){
     $("#register_form").submit();
+}else{
+    swal({
+  //position: 'top-end',
+  type: 'warning',
+  title: 'Acepte los terminos',
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+}
+}else{
+    swal({
+  //position: 'top-end',
+  type: 'warning',
+  title: 'Los correos no coinciden',
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+})
+  }
+
   }
   }
 

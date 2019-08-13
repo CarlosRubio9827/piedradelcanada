@@ -1,5 +1,6 @@
 <?php
-$titulo = "Iniciar Sesión";
+session_start();
+$titulo = "Consulta tu estado";
 $actual = "login";
 require_once("../layout/header.php");
 ?>
@@ -7,7 +8,7 @@ require_once("../layout/header.php");
 <link rel="stylesheet" href="../../assets/css/guest/auth/login_style.css" type="text/css">
 <style type="text/css">
 body {
-    background: url("../../assets/img/guest/login/background1.jpg")no-repeat center center;
+    background: url("../../assets/img/guest/login/background.jpg")no-repeat center center;
     background-size: cover;
 }
 
@@ -29,11 +30,11 @@ require_once("../layout/css.php");
                                         <div class="card-body">
                                             <!--Header-->
                                             <div class="text-center">
-                                                <h3 class="white-text"><i class="fas fa-door-closed mr-2"></i>Iniciar sesión</h3>
+                                                <h3 class="white-text"><i class="fas fa-user-check mr-2"></i>Consulta tu estado</h3>
                                                 <hr class="hr-light">
                                             </div>
-                                            <form id="login_form" method="POST" action="{{ route('login') }}">
-
+                                            <form id="login_form" method="POST" action="../../controllers/auth.php">
+                                            <input type="hidden" required value="login" name="method">
                                             <div class="md-form">
                                                 <i class="far fa-envelope prefix white-text"></i>
                                                 <input id="email" type="email" class="form-control validate white-text" name="email" required autofocus maxlength="100">
@@ -42,18 +43,18 @@ require_once("../layout/css.php");
                              
 
                                             <div class="md-form">
-                                                <i class="fas fa-lock prefix white-text"></i>
-                                                <input id="password" type="password" class="form-control validate white-text" name="password" required pattern=".{8,50}" title="Se requiere entre 8 y 50 caracteres" minlength="8" maxlength="50">
-                                                <label for="password" data-error="Error" data-success="Correcto">Contraseña <span class="obligatorio">*</span></label>
+                                                <i class="fas fa-id-card prefix white-text"></i>
+                                                <input id="numeroIdentificacion" type="number" class="form-control validate white-text" name="numeroIdentificacion" required>
+                                                <label for="numeroIdentificacion" data-error="Error" data-success="Correcto">Número identificación <span class="obligatorio">*</span></label>
                                             </div>
                      
-
                                             <div class="text-center mt-4">
                                                 <a onclick="validar()" class="btn btn-outline-white hoverable waves-light" role="button">
-                                                    <i class="fas fa-door-closed mr-2"></i>Iniciar sesión</a>
-                                                    <a  href="{{ route('password.reset',array(null)) }}" class="btn waves-light white-text" role="button">
-                                                    <i class="fas fa-key mr-2"></i>¿Olvido la contraseña?</a>
+                                                    <i class="fas fa-door-closed mr-2"></i>Consulta tu estado</a>
+                                                    <!--a class="btn waves-light white-text" role="button">
+                                                    <i class="fas fa-key mr-2"></i>¿Olvido la contraseña?</a-->
                                             </div>
+                                
                                             </form>
                                         </div>
                                     </div>

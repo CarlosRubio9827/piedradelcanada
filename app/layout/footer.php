@@ -1,3 +1,28 @@
+<?php
+
+if($_SESSION['message']){
+?>
+<script type="text/javascript">
+$(document).ready(function(){
+  var type = "<?php echo $_SESSION['message_type'];?>";
+  var message = "<?php echo $_SESSION['message'];?>";
+   swal({
+  //position: 'top-end',
+  type: type,
+  title: message,
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+});
+</script>
+<?php
+$_SESSION['message_type'] = NULL;
+$_SESSION['message'] = NULL;
+}
+?>
 <script type="text/javascript">
 function salir(){
     swal({
@@ -16,17 +41,6 @@ function salir(){
 }).then((result) => {
   if (result.value) {
     $("#logout-form").submit();
-  }else{
-    swal({
-  position: 'top-end',
-  type: 'error',
-  title: 'Operación cancelada por el usuario',
-  showConfirmButton: false,
-  toast: true,
-  animation: false,
-  customClass: 'animated lightSpeedIn',
-  timer: 3000
-})
   }
 })
 }

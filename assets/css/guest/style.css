@@ -5,16 +5,16 @@
   background-color: rgba(0, 0, 0, 0.2); }
 
 .top-nav-collapse {
-  background-color: #1C2331; }
+  background-color: #1D7DAD; }
 
 /* Adding color to the Navbar on mobile */
 @media only screen and (max-width: 768px) {
   .navbar {
-    background-color: #1C2331; } }
+    background-color: #1D7DAD; } }
 
 /* Footer color for sake of consistency with Navbar */
 .page-footer {
-  background-color: #1C2331; }
+  background-color: #1D7DAD; }
 
 #time-counter {
   font-size: 5rem; }
@@ -23,7 +23,7 @@
 
     @media (min-width: 800px) and (max-width: 850px) {
             .navbar:not(.top-nav-collapse) {
-                background: #1C2331!important;
+                background: #1D7DAD!important;
             }
         }
 
@@ -68,4 +68,11 @@
   border-radius: 35px;
   font-size: 24px;
   line-height: 1.33;
+}
+
+.nav_formu{
+  width:0px!important;
+}
+.content-div{
+  width:90vw!important;
 }

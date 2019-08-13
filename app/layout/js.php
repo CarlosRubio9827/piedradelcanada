@@ -3,7 +3,7 @@
     </div>
 <hr class="my-1">
 <div class="pb-2">
-    Desarrollado por Jaiver Balanta y Carlos Rubio
+    Desarrollado por Don Alberto Rubio
 </div>
 
 <div class="footer-copyright py-3">
