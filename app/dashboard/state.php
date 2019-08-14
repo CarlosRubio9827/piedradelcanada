@@ -70,26 +70,16 @@ require_once("../layout/css.php");
                                                 </ul>
                                                 
                                                 </div>
-                                                    
-
-                                                <?php
-                                                }else if($user->estadoIncripcion = "completado"){
-                                                    echo "registrado";
-                                                }
-
-                                                ?>
-
-      
-
-                                            
-                                            
-                                           
+                                       
                                         </div>
                                     </div>
                                     <!--/.Form-->
                                     
                                 </div>
-                                <!--Datos personales--> 
+
+        
+
+                                                   <!--Datos personales--> 
                                 
                                 <div class="col-12 mb-5 content-div">
                                     <!--Form-->
@@ -103,43 +93,43 @@ require_once("../layout/css.php");
                                                 <hr class="hr-light">
                                                  
                                                 <div style=" text-align: center;">
-                <table  class="table">
-                        <thead>
-                            
-                        </thead>
-                        <tbody style=" text-align: left;">
-                            <tr>
-                            <th scope="row"><strong>Distancia</strong></th>
-                            <td><?php echo $user->distancia; ?></td>
-                            
-                            </tr>
-                            <tr>
-                            <th scope="row"><strong>Nombre Completo</strong></th>
-                            <td><?php echo $user->nombreUsuario.$user->apellidosUsuario; ?></td>
-                            </tr>
-                            <tr>
-                            <th scope="row"><strong>Correo Electrónico</strong></th>
-                            <td><?php echo $user->correoElectronico; ?></td>
-                            </tr>
-                            <tr>
-                            <th scope="row"><strong>Doc. Identidad</strong></th>
-                            <td><?php echo $user->tipoIdentificacion.$user->numeroIdentificacion; ?></td>
-                            </tr>
-                            <tr>
-                            <th scope="row"><strong>Número Teléfono</strong></th>
-                            <td><?php echo $user->telefono; ?></td>
-                            </tr>
-                            <tr>
-                            <th scope="row"><strong>Edad</strong></th>
-                            <td><?php echo $user->fechaNacimiento . ' Años'; ?></td>
-                            </tr>
-                            <tr>
-                            <th scope="row"><strong>Talla Camisa</strong></th>
-                            <td><?php echo $user->tallaCamisa; ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </div>
+                                                    <table  class="table">
+                                                            <thead>
+                                                                
+                                                            </thead>
+                                                            <tbody style=" text-align: left;">
+                                                                <tr>
+                                                                <th scope="row"><strong>Distancia</strong></th>
+                                                                <td><?php echo $user->distancia; ?></td>
+                                                                
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Nombre Completo</strong></th>
+                                                                <td><?php echo $user->nombreUsuario.$user->apellidosUsuario; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Correo Electrónico</strong></th>
+                                                                <td><?php echo $user->correoElectronico; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Doc. Identidad</strong></th>
+                                                                <td><?php echo $user->tipoIdentificacion.$user->numeroIdentificacion; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Número Teléfono</strong></th>
+                                                                <td><?php echo $user->telefono; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Fecha de Nacimiento</strong></th>
+                                                                <td><?php echo $user->fechaNacimiento; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Talla Camisa</strong></th>
+                                                                <td><?php echo $user->tallaCamisa; ?></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                </div>
                                                 
                                                 </div>
    
@@ -150,7 +140,97 @@ require_once("../layout/css.php");
                                 </div>
 
                                 <!--Fin datos Persoanles-->
+                                <?php
+                                                }else if($user->estadoIncripcion == 'pago'){
 
+                                                    ?>
+
+                                <div class="col-12 mb-5 content-div">
+                                    <!--Form-->
+                                    <div class="card z-depth-5 hoverable">
+                                        <div class="card-body">
+                                            <!--Header-->
+                                            <div class="text-center">
+                                                <h3 class="white-text"><i class="fas fa-user mr-2"></i>
+                                                ¡Felicidades, estás inscrito en la Piedra Del Canadá: El órigen!
+                                            </h3>
+                                                <hr class="hr-light">
+                                                 
+                                                <h3 class="white-text">Pronto te daremos más información acerca de la carrera</strong></h3>
+
+                                              
+                                                </div>
+   
+                                        </div>
+                                    </div>
+                                    <!--/.Form-->
+                                    
+                                </div>
+
+
+                                <div class="col-12 mb-5 content-div">
+                                    <!--Form-->
+                                    <div class="card z-depth-5 hoverable">
+                                        <div class="card-body">
+                                            <!--Header-->
+                                            <div class="text-center">
+                                                <h3 class="white-text"><i class="fas fa-user mr-2"></i>
+                                                Tus Datos Personales
+                                            </h3>
+                                                <hr class="hr-light">
+                                                 
+                                                <div style=" text-align: center;">
+                                                    <table  class="table">
+                                                            <thead>
+                                                                
+                                                            </thead>
+                                                            <tbody style=" text-align: left;">
+                                                                <tr>
+                                                                <th scope="row"><strong>Distancia</strong></th>
+                                                                <td><?php echo $user->distancia; ?></td>
+                                                                
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Nombre Completo</strong></th>
+                                                                <td><?php echo $user->nombreUsuario.$user->apellidosUsuario; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Correo Electrónico</strong></th>
+                                                                <td><?php echo $user->correoElectronico; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Doc. Identidad</strong></th>
+                                                                <td><?php echo $user->tipoIdentificacion.$user->numeroIdentificacion; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Número Teléfono</strong></th>
+                                                                <td><?php echo $user->telefono; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Fecha de Nacimiento</strong></th>
+                                                                <td><?php echo $user->fechaNacimiento; ?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                <th scope="row"><strong>Talla Camisa</strong></th>
+                                                                <td><?php echo $user->tallaCamisa; ?></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                </div>
+                                                
+                                                </div>
+   
+                                        </div>
+                                    </div>
+                                    <!--/.Form-->
+                                    
+                                </div>
+
+                                                    <?php
+                                                    
+                                                }
+                                ?>
+                                
                             </div>
                         </div>
                     </div>
