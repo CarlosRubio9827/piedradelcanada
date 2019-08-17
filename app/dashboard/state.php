@@ -99,7 +99,12 @@ require_once("../layout/css.php");
                                                                 
                                                             </thead>
                                                             <tbody style=" text-align: left;background-color: rgba(0,0,0,0.05)!important;">
-                                                                <tr class="hoverable tr-theme">
+                                                            <tr class="hoverable tr-theme">
+                                                                <th scope="row"><strong>Estado Inscripción </strong></th>
+                                                                <td><?php echo "Pendiente de Pago"; ?></td>
+                                                                
+                                                                </tr>    
+                                                            <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Distancia</strong></th>
                                                                 <td><?php echo $user->distancia; ?></td>
                                                                 
@@ -170,55 +175,61 @@ require_once("../layout/css.php");
                                     
                                 </div>
 
-
                                 <div class="col-12 mb-5 content-div">
                                     <!--Form-->
                                     <div class="card z-depth-5 hoverable">
                                         <div class="card-body">
                                             <!--Header-->
                                             <div class="text-center">
-                                                <h3 class="white-text"><i class="fas fa-user mr-2"></i>
-                                                Tus Datos Personales            
-                                            </h3>
-                                                <hr class="hr-light">
+                                                <h4 class="white-text"><i class="fas fa-user mr-2"></i>
+                                                Tus Datos Personales
+                                            </h4>
+                                                <!--hr class="hr-light"-->
                                                  
-                                                <div style=" text-align: center;">
-                                                    <table  class="table">
+                                                <div style=" text-align: center; background-color: rgba(255,255,255,0)!important;">
+                                                    <table  class="table table-sm table-hover" >
                                                             <thead>
                                                                 
                                                             </thead>
-                                                            <tbody style=" text-align: left;">
-                                                                <tr>
+                                                            <tbody style=" text-align: left;background-color: rgba(0,0,0,0.05)!important;">
+                                                            <tr class="hoverable tr-theme">
+                                                                <th scope="row"><strong>Estado Inscripción </strong></th>
+                                                                <td><?php echo "Pendiente de Pago"; ?></td>
+                                                                
+                                                                </tr>    
+                                                            <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Distancia</strong></th>
                                                                 <td><?php echo $user->distancia; ?></td>
                                                                 
                                                                 </tr>
-                                                                <tr>
+                                                                <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Nombre Completo</strong></th>
                                                                 <td><?php echo $user->nombreUsuario.$user->apellidosUsuario; ?></td>
                                                                 </tr>
-                                                                <tr>
+                                                                <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Correo Electrónico</strong></th>
                                                                 <td><?php echo $user->correoElectronico; ?></td>
                                                                 </tr>
-                                                                <tr>
+                                                                <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Doc. Identidad</strong></th>
                                                                 <td><?php echo $user->tipoIdentificacion.$user->numeroIdentificacion; ?></td>
                                                                 </tr>
-                                                                <tr>
+                                                                <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Número Teléfono</strong></th>
                                                                 <td><?php echo $user->telefono; ?></td>
                                                                 </tr>
-                                                                <tr>
+                                                                <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Fecha de Nacimiento</strong></th>
                                                                 <td><?php echo $user->fechaNacimiento; ?></td>
                                                                 </tr>
-                                                                <tr>
+                                                                <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Talla Camisa</strong></th>
                                                                 <td><?php echo $user->tallaCamisa; ?></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                                        <a href="http://www.piedradelcanadatr.com/" class="btn btn-theme btn-outline-white hoverable waves-light waves-effect"><i class="fas fa-door-closed mr-2"></i>Regresar a la Página Principal</a>
+
                                                 </div>
                                                 
                                                 </div>
@@ -226,11 +237,7 @@ require_once("../layout/css.php");
                                         </div>
                                     </div>
                                     <!--/.Form-->
-                                    <a href="www.piedradelcanandatr.com" class="btn btn-outline-white"><i class="fas fa-door-closed mr-2"></i>Regresar a la página</a>
-
-                                    
-                                </div>
-
+                                 </div>
                                                     <?php
                                                     
                                                 }

@@ -59,7 +59,7 @@ if($usuario){
     $seguroMedico = $_POST['seguroMedico'];
     $tallaCamisa = $_POST['tallaCamisa'];
     $nombreContactoEmergencia = $_POST['nombreContactoEmergencia'];
-    $telefonoContactoEmergencia = $_POST['telefonoContactoEmergencia'];
+    $telefonoContactoEmergencia = $_POST['numeroContactoEmergencia'];
     
     if($distancia == '10K'){
         $valorPagar = 60000;

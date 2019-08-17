@@ -43,8 +43,7 @@
                     <i class="fas fa-running mr-2"></i><?php echo $user->nombreUsuario." ".$user->apellidosUsuario ;?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right menu-sup" aria-labelledby="navbarDropdownMenuLink">
-                        <a href="../dashboard/state.php" class="dropdown-item hoverable waves-light <?php echo ($actual == 'state') ? 'dropdown-item-active' : '' ?>"><i class="fas fa-home mr-2"></i>Página principal</a>
-                        
+                         
                         <a class="dropdown-item hoverable waves-effect"onclick="salir();">
                         <form class="nav_formu" id="logout-form" method="POST" action="../../controllers/auth.php">
                                             <input type="hidden" required value="logout" name="method"></form>
