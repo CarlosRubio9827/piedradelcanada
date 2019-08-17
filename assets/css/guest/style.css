@@ -76,3 +76,16 @@
 .content-div{
   width:90vw!important;
 }
+
+.btn-theme{
+  background-color: rgba(0,0,0,0.5) !important;
+}
+.btn-theme:hover{
+  background-color: rgba(29, 125, 173,0.3) !important;
+}
+.tr-theme{
+  background-color: rgba(0,0,0,0.2) !important;
+}
+.tr-theme:hover{
+  background-color: rgba(29, 125, 173,0.2) !important;
+}

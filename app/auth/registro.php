@@ -15,7 +15,7 @@ body {
 }
 
 .card{ 
-    background-color: rgba(0, 0, 0, 0.7) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
 input,.md-form > small,.select2-selection__rendered{
     color:  white !important;
@@ -26,7 +26,7 @@ require_once("../layout/css.php");
 ?>
 <main>
 <section class="view intro-2">
-        <div class="mask pattern-6 flex-center"></div>
+        <div class="mask pattern-0 flex-center"></div>
 <!-- Main Container -->
 <div class="container mt-5 pt-3">
    
@@ -340,7 +340,7 @@ Entiendo y acepto que para el día de la competencia es obligatorio portar el n�
                                     
                          
 
-                                        <a onclick="validar()" class="btn btn-outline-white hoverable waves-light mt-5 role="button">
+                                        <a onclick="validar()" class="btn btn-theme btn-outline-white hoverable waves-light mt-5 role="button">
                                             <i class="fas fa-user-plus mr-2"></i>Registrarse</a>
                                     </form>
                             </div>
@@ -364,7 +364,7 @@ Entiendo y acepto que para el día de la competencia es obligatorio portar el n�
                 <hr class="hr-light">
                 <h6>¿Ya estás registrado?, inicia sesion y verifica el estado de tu inscripción.</h6>
                 <br>
-                <a href="login.php" class="btn btn-outline-white"><i class="fas fa-door-closed mr-2"></i>Consulta tu Estado</a>
+                <a href="login.php" class="btn btn-outline-white btn-theme"><i class="fas fa-door-closed mr-2"></i>Consulta tu Estado</a>
             </div>
         </div>
     </div>
@@ -462,7 +462,54 @@ function validar(){
     var confirmarEmail = $("#confirmarEmail").val();
     if(email == confirmarEmail){
 if($("#terminoCondiciones").prop("checked") == true){
-    $("#register_form").submit();
+   var valor =  $("#numeroIdentificacion").val();
+    $.ajax({
+  url: "../../controllers/auth.php",
+  method: "POST",
+  data: { method: "check_nuip", nuip:valor},
+}).done(function(response) {
+    //console.log(response);
+    var data = JSON.parse(response);
+    if(data.status == 200){
+    if(!data.existe){
+        $("#register_form").submit();
+    }else{
+        swal({
+  //position: 'top-end',
+  type: 'warning',
+  title: 'El número de identificación ya ha sido registrado.',
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+    }
+    }else{
+        swal({
+  //position: 'top-end',
+  type: 'error',
+  title: data.existe,
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+    }
+    
+}).fail(function( jqXHR, textStatus ) {
+    swal({
+  //position: 'top-end',
+  type: 'error',
+  title: textStatus,
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+});
 }else{
     swal({
   //position: 'top-end',

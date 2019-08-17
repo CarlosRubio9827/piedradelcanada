@@ -11,6 +11,9 @@ body {
     background: url("../../assets/img/guest/login/background.jpg")repeat center center fixed;
     background-size: cover;
 }
+.center-div-link{ 
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
 
 </style>
 <?php
@@ -18,7 +21,7 @@ require_once("../layout/css.php");
 ?>
 <!--Intro Section-->
 <section class="view intro-2">
-        <div class="mask pattern-6 flex-center"></div>
+        <div class="mask pattern-0 flex-center"></div>
                 <div class="full-bg-img">
                     <div class="container flex-center">
                         <div class="d-flex align-items-center content-height">
@@ -49,7 +52,7 @@ require_once("../layout/css.php");
                                             </div>
                      
                                             <div class="text-center mt-4">
-                                                <a onclick="validar()" class="btn btn-outline-white hoverable waves-light" role="button">
+                                                <a onclick="validar()" class="btn btn-theme btn-outline-white hoverable waves-light" role="button">
                                                     <i class="fas fa-door-closed mr-2"></i>Consulta tu estado</a>
                                                     <!--a class="btn waves-light white-text" role="button">
                                                     <i class="fas fa-key mr-2"></i>¿Olvido la contraseña?</a-->
@@ -61,7 +64,7 @@ require_once("../layout/css.php");
                                     <!--/.Form-->
                                     
                                 </div>
-                                           <div class="center-div-link text-center text-md-left  col-md-6 col-xl-5 offset-xl-1">
+                                           <div class="hoverable center-div-link text-center text-md-left  col-md-6 col-xl-5 offset-xl-1">
                                                 <!--div class="text-center">
                                                         <h3 class="white-text"><i class="fas fa-users mr-2"></i>Usuarios</h3>
                                                         <hr class="hr-light">
@@ -72,7 +75,7 @@ require_once("../layout/css.php");
                                         <hr class="hr-light">
                                         <h6 class="text-intro">¿Aún no te has registrado?, regístrate en simples pasos para que no te pierdas esta espectacular carrera.</h6>
                                         <br>
-                                        <a href="registro.php" class="btn btn-outline-white"><i class="fas fa-user-plus mr-2"></i>Registrarse</a>
+                                        <a href="registro.php" class="btn-theme btn btn-outline-white hoverable waves-light"><i class="fas fa-user-plus mr-2"></i>Registrarse</a>
                                     </div>
                                 </div>
 

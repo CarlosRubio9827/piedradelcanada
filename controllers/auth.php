@@ -6,6 +6,22 @@ if(@$method == "logout"){
     session_destroy();
     header('Location: ../app/auth/login.php');
 }
+else if(@$method == "check_nuip"){
+   try{
+    $nuip = $_POST['nuip'];
+    $db = new PDO_Connect;
+    $db->connect();
+    $usuario = $db->getRow("SELECT * FROM usuarios WHERE numeroIdentificacion = ? ",array($nuip));
+    if($usuario){
+        echo json_encode(array('existe'=> true, 'status' => 200));
+    }else{
+        echo json_encode(array('existe'=> false, 'status' => 200));
+    }
+} catch (Exception $e) {
+    echo json_encode(array('existe'=> $e->getMessage(), 'status' => 500));
+}
+    exit(0);
+}
 else if(@$method == "login"){ 
     $db = new PDO_Connect;
     $db->connect();
