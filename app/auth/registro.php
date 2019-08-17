@@ -10,9 +10,10 @@ require_once("../layout/header.php");
 
 <style type="text/css">
 body {
-    background: url("../../assets/img/guest/register/background.jpg")repeat center center fixed ;
-    background-size: auto;
+    background: url("../../assets/img/guest/register/background.jpg")repeat center center fixed;
+    background-size: cover;
 }
+
 .card{ 
     background-color: rgba(0, 0, 0, 0.7) !important;
 }
@@ -64,9 +65,9 @@ require_once("../layout/css.php");
                                         <small for="distancia">Distancia que desea correr <span class="obligatorio">*</span></small>   
                                         <select class="form-control" required id="distancia" name="distancia">
                                         <option value="" disabled selected>Selecciona una opción</option>
-                                        <option value="10k">10K - 60.000$</option>
-                                            <option value="21k">21K - 70.000$</option>
-                                            <option value="30k">30K - 90.000$</option>
+                                        <option value="10K">10K - 60.000$</option>
+                                            <option value="21K">21K - 70.000$</option>
+                                            <option value="30K">30K - 90.000$</option>
                                         </select>
                                         </div>
                                 
@@ -450,7 +451,7 @@ shortTime : false,
 'okText' : '<i class="fas fa-check fa-2x"></i>' 
 
 });
-
+ 
 function validar(){
   if($("#register_form").validate({
     lang: 'es',

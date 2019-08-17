@@ -8,7 +8,7 @@ require_once("../layout/header.php");
 <link rel="stylesheet" href="../../assets/css/guest/auth/login_style.css" type="text/css">
 <style type="text/css">
 body {
-    background: url("../../assets/img/guest/login/background.jpg")no-repeat center center;
+    background: url("../../assets/img/guest/login/background.jpg")repeat center center fixed;
     background-size: cover;
 }
 

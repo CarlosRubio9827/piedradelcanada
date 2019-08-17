@@ -4,7 +4,7 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="javascript:void();" >
+      <a class="navbar-brand" href="http://www.piedradelcanadatr.com/" >
         <strong> <i class="fas fa-mountain mr-2"></i>Piedra del Canada: El Órigen</strong>
       </a>
 

@@ -8,10 +8,10 @@ require_once("../layout/header.php");
 <link rel="stylesheet" href="../../assets/css/guest/auth/login_style.css" type="text/css">
 <style type="text/css">
 body {
-    background: url("../../assets/img/dashboard/state/background.jpg")no-repeat center center;
+    background: url("../../assets/img/dashboard/state/background.jpg")repeat center center fixed;
     background-size: cover;
 }
-
+ 
 </style> 
 <?php
 require_once("../layout/css.php");
@@ -129,6 +129,8 @@ require_once("../layout/css.php");
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                                        <a href="http://www.piedradelcanadatr.com/" class="btn btn-success"><i class="fas fa-door-closed mr-2"></i>Regresar a la Página Principal</a>
+
                                                 </div>
                                                 
                                                 </div>
@@ -136,7 +138,7 @@ require_once("../layout/css.php");
                                         </div>
                                     </div>
                                     <!--/.Form-->
-                                    
+                                  
                                 </div>
 
                                 <!--Fin datos Persoanles-->
@@ -175,7 +177,7 @@ require_once("../layout/css.php");
                                             <!--Header-->
                                             <div class="text-center">
                                                 <h3 class="white-text"><i class="fas fa-user mr-2"></i>
-                                                Tus Datos Personales
+                                                Tus Datos Personales            
                                             </h3>
                                                 <hr class="hr-light">
                                                  
@@ -223,6 +225,8 @@ require_once("../layout/css.php");
                                         </div>
                                     </div>
                                     <!--/.Form-->
+                                    <a href="www.piedradelcanandatr.com" class="btn btn-outline-white"><i class="fas fa-door-closed mr-2"></i>Regresar a la página</a>
+
                                     
                                 </div>
 

@@ -15,7 +15,7 @@ else if(@$method == "login"){
 if($usuario){
     session_start();
     $_SESSION['usuario'] = json_encode($usuario);   
-    $_SESSION['message'] = "Bienvenido a la piedra del canada.";
+    $_SESSION['message'] = "Bienvenido a la piedra del canadá: El Órigen.";
     $_SESSION['message_type'] = "success";
     header('Location: ../app/dashboard/state.php');
 }else{
@@ -47,11 +47,13 @@ if($usuario){
     
     if($distancia == '10K'){
         $valorPagar = 60000;
-    }else if($distancia == '21K'){
+    }elseif($distancia == '21K'){
         $valorPagar = 70000;
     }else{
         $valorPagar = 90000;
     }
+
+
     $db = new PDO_Connect;
     $db->connect();
     $res = $db->query("INSERT INTO usuarios (nombreUsuario, apellidosUsuario, distancia, valorPagar, correoElectronico, tipoIdentificacion, numeroIdentificacion, fechaNacimiento, sexo, telefono, pais,departamento, ciudad, tipoSangre, entidadSalud, tallaCamisa,contactoEmergenciaNombre, contactoEmergenciaTelefono, estadoIncripcion, estadoKit) 
@@ -62,7 +64,7 @@ if($usuario){
 if($usuario){
     session_start();
     $_SESSION['usuario'] = json_encode($usuario);   
-    $_SESSION['message'] = "Bienvenido a la piedra del canada.";
+    $_SESSION['message'] = "Bienvenido a la piedra del canadá: El Órigen.";
     $_SESSION['message_type'] = "success";
     header('Location: ../app/dashboard/state.php');
 
