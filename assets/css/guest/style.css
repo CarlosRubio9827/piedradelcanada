@@ -2,7 +2,7 @@
 
 /* Navbar animation */
 .navbar {
-  background-color: rgba(0, 0, 0, 0.2); }
+  background-color: rgba(0, 0, 0, 0.3); }
 
 .top-nav-collapse {
   background-color: #1D7DAD; }
@@ -10,7 +10,8 @@
 /* Adding color to the Navbar on mobile */
 @media only screen and (max-width: 768px) {
   .navbar {
-    background-color: #1D7DAD; } }
+    background-color: #1D7DAD; } 
+  }
 
 /* Footer color for sake of consistency with Navbar */
 .page-footer {
@@ -78,14 +79,21 @@
 }
 
 .btn-theme{
-  background-color: rgba(0,0,0,0.5) !important;
+  background-color: rgba(0,0,0,0.3) !important;
 }
 .btn-theme:hover{
-  background-color: rgba(29, 125, 173,0.3) !important;
+  background-color: rgba(29, 125, 173,0.2) !important;
 }
 .tr-theme{
   background-color: rgba(0,0,0,0.2) !important;
 }
 .tr-theme:hover{
   background-color: rgba(29, 125, 173,0.2) !important;
+}
+
+.nav-item{
+  background-color: rgba(0,0,0,0.5) !important;
+}
+.nav-item.active{
+  background-color: rgba(9, 71, 102, 0.4) !important;
 }

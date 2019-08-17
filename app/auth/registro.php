@@ -281,7 +281,7 @@ require_once("../layout/css.php");
                                         </div>
 
                                         <div class="text-center">
-                                            <h3 class="white-text">En caso de emergencia nos comunicaremos con</h3>
+                                           <center> <h5 class="white-text" style="max-width:300px;">En caso de emergencia nos comunicaremos con</h5></center>
                                             <hr class="hr-light">
                                         </div>
                                         
@@ -313,9 +313,9 @@ require_once("../layout/css.php");
                                         <div class="form-row">
                                                 <!-- Grid column -->
                                                 <div class="col-md-12">
-                                            <blockquote class="blockquote bq-info">
+                                            <blockquote class="blockquote bq-primary">
   <p class="bq-title">Términos y Condiciones de participación carrera atlética y declaración de exoneración de responsabilidades y autorización.</p>
-  <p class="white-text txt-condiciones">Con el diligenciamiento, firma de la presente declaración de aceptación, presencia en el evento y porte del número de competencia entiendo y acepto los términos y condiciones de participación en la carrera, aquí descritos, acepto las condiciones de inscripción y declaro que reconozco que este evento es una actividad potencialmente peligrosa y me acojo a su reglamento de participación.
+  <p class="white-text txt-condiciones" style="text-align: justify;">Con el diligenciamiento, firma de la presente declaración de aceptación, presencia en el evento y porte del número de competencia entiendo y acepto los términos y condiciones de participación en la carrera, aquí descritos, acepto las condiciones de inscripción y declaro que reconozco que este evento es una actividad potencialmente peligrosa y me acojo a su reglamento de participación.
 
 Declaro que en forma libre y voluntaria he decidido participar en la carrera, que estoy en perfectas condiciones físicas y de salud, así como adecuadamente entrenado y preparado para participar en la misma y que estoy afiliado al régimen de salud, prestado por la EPS indicada al pie de mi firma. Aceptare cualquier decisión de la organización de la carrera sobre mi participación y entiendo que la inscripción a la carrera me da el derecho a participar en la competencia, bajo ninguna circunstancia en cualquier evento en que NO pueda participar en la carrera o reclamar el kit de competencia, en las fechas establecidas por la organización, no podré ni reclamar el kit de competencia, ni exigir el reembolso del valor de la inscripción.
 
@@ -353,9 +353,9 @@ Entiendo y acepto que para el día de la competencia es obligatorio portar el n�
         </div>
         <!-- /.Content -->
 
-        <div class="mt-5 center-div-link text-center text-md-left  col-md-6 col-xl-5 offset-xl-1">
+        <div class="mt-5  text-center text-md-left  col-md-6 col-xl-5 offset-xl-1">
          
-            <div class="card mb-4 z-depth-5 hoverable">
+            <div class="card mb-4 z-depth-5 hoverable mt-5">
                 <div class="card-body">
                   
                 <div class="white-text">

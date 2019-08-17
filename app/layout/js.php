@@ -3,13 +3,13 @@
     </div>
 <hr class="my-1">
 <div class="pb-2">
-    Desarrollado por Jaiver Balanta - Carlos Rubio
+    Desarrollado por Carlos Alberto Rubio
 </div>
 
 <div class="footer-copyright py-3">
     Copyright© <?php echo date('Y') ?> - Todos los derechos reservados
 </div>
-</footer>
+</footer-->
 <script type="text/javascript" src="../../assets/js/addons/moment.js"></script>
 <script type="text/javascript" src="../../assets/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../assets/js/popper.min.js"></script>

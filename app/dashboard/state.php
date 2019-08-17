@@ -3,6 +3,7 @@ session_start();
 $titulo = "Estado de la Inscripción";
 $actual = "state";
 require_once("../layout/header.php");
+require_once("../../controllers/require/pdo.php");
 ?>
 <link rel="stylesheet" href="../../assets/css/guest/auth/style.css" type="text/css">
 <link rel="stylesheet" href="../../assets/css/guest/auth/login_style.css" type="text/css">
@@ -16,6 +17,18 @@ body {
 </style> 
 <?php
 require_once("../layout/css.php");
+$db = new PDO_Connect;
+$db->connect();
+$usuario = $db->getRow("SELECT * FROM usuarios WHERE idusuarios = ?",array($user->idusuarios));
+if($usuario){
+    $_SESSION['usuario'] = json_encode($usuario);   
+    $user = $usuario;
+}else{
+    header('Location: ../auth/login.php');
+}
+$tz  = new DateTimeZone('America/Bogota');
+$date_time = new DateTime($user->fechaNacimiento, $tz);
+$edad = $date_time->diff(new DateTime('now', $tz))->y; 
 ?>
 <!--Intro Section-->
 <section class="section pt-4">
@@ -51,12 +64,12 @@ require_once("../layout/css.php");
                                                         <h6 align="left"><strong>Tranferencia Bancaria</strong></h6>
                                                         <ul>
                                                             <li type="circle">
-                                                                <p style="font-size:14px;" align="left">Consigne o transfiera la suma de <strong> <?php echo '$'.number_format($user->valorPagar);?>
-                                                            (valor de <?php echo $user->distancia; ?>)</strong> a la CUENTA DE AHORROS EJEMPLOBANCO # 000-2323232323, a nombre de Nelso Eduardo Martinez cc 113691790.</p>
+                                                                <p style="font-size:14px;" align="left">Consigne o transfiera la suma de <span class="resaltar"><?php echo '$'.number_format($user->valorPagar);?></span>
+                                                            (valor de <span class="resaltar"><?php echo $user->distancia; ?></span>)</strong> a la Cuenta de ahorros <span class="resaltar">Banco</span> #<span class="resaltar">000-2323232323</span>, a nombre de <span class="resaltar">Nelso Eduardo Martinez</span>. CC <span class="resaltar">113691790</span>.</p>
                                                             </li>
 
                                                             <li type="circle">
-                                                                <p  style="font-size:14px;"align="left">Por último envia un correo a <strong>rubiogallegoc@gmail.com</strong> con el comprobante de pago para 
+                                                                <p  style="font-size:14px;"align="left">Por último envia un correo a <span class="resaltar">rubiogallegoc@gmail.com</span> con el comprobante de pago para 
                                                             confirmar tu transacción y activar tu inscripción.</p>
                                                             </li>
                                                         </ul>
@@ -64,12 +77,22 @@ require_once("../layout/css.php");
                                                     <li class="white-text">
                                                         <h6 align="left" > <strong>Pago Presencial</strong></h6>
                                                         <ul>
-                                                            <li><p style="font-size:14px;"  align="left">Comunicate al número de celular <strong>3157813181</strong> y acuerda un encuentro para terminar tu proceso de inscripción.</p>
+                                                            <li><p style="font-size:14px;"  align="left">Comunicate al número de celular <span class="resaltar">3157813181</span> y acuerda un encuentro para terminar tu proceso de inscripción.</p>
                                                             </li>
                                                         </ul>
                                                     </li>
                                                 </ul>
-                                                
+                                                <?php
+                                                }else if($user->estadoIncripcion == 'pago'){
+                                                    ?>
+                                                    <h4 class="white-text"><i class="fas fa-flag-checkered mr-2"></i>
+                                                    ¡Felicidades, estás inscrito en la Piedra Del Canadá: El órigen!
+                                                </h4>
+                                             
+                                                    <h6 class="white-text"><span class="resaltar">Pronto te daremos más información acerca de la carrera</span></strong></h6>
+                                                    <?php 
+                                                        }
+                                                    ?>
                                                 </div>
                                        
                                         </div>
@@ -88,7 +111,7 @@ require_once("../layout/css.php");
                                         <div class="card-body">
                                             <!--Header-->
                                             <div class="text-center">
-                                                <h4 class="white-text"><i class="fas fa-user mr-2"></i>
+                                                <h4 class="white-text"><i class="fas fa-user-circle mr-2"></i>
                                                 Tus Datos Personales
                                             </h4>
                                                 <!--hr class="hr-light"-->
@@ -101,8 +124,26 @@ require_once("../layout/css.php");
                                                             <tbody style=" text-align: left;background-color: rgba(0,0,0,0.05)!important;">
                                                             <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Estado Inscripción </strong></th>
-                                                                <td><?php echo "Pendiente de Pago"; ?></td>
+                                                                <td>
+                                                                <?php
+
+if($user->estadoIncripcion == 'registrado'){
+  
+    ?>
                                                                 
+                                                                  <h4><span class="badge badge-warning hoverable">
+                                                                  <i class="fas fa-hand-holding-usd mr-1"></i> Pendiente de Pago
+                                                                </span></h4>
+                                                                <?php
+                                                }else if($user->estadoIncripcion == 'pago'){
+                                                    ?>
+                                                      <h4><span class="badge badge-success hoverable">
+                                                      <i class="fas fa-flag-checkered mr-1"></i> Inscrito
+                                                                </span></h4>
+                                                            
+                                                            <?php 
+                                                        }
+                                                    ?></td>
                                                                 </tr>    
                                                             <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Distancia</strong></th>
@@ -111,7 +152,7 @@ require_once("../layout/css.php");
                                                                 </tr>
                                                                 <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Nombre Completo</strong></th>
-                                                                <td><?php echo $user->nombreUsuario.$user->apellidosUsuario; ?></td>
+                                                                <td><?php echo mb_strtoupper($user->nombreUsuario." ".$user->apellidosUsuario, 'UTF-8'); ?></td>
                                                                 </tr>
                                                                 <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Correo Electrónico</strong></th>
@@ -119,7 +160,7 @@ require_once("../layout/css.php");
                                                                 </tr>
                                                                 <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Doc. Identidad</strong></th>
-                                                                <td><?php echo $user->tipoIdentificacion.$user->numeroIdentificacion; ?></td>
+                                                                <td><?php echo $user->tipoIdentificacion." -:- ".$user->numeroIdentificacion; ?></td>
                                                                 </tr>
                                                                 <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Número Teléfono</strong></th>
@@ -127,15 +168,19 @@ require_once("../layout/css.php");
                                                                 </tr>
                                                                 <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Fecha de Nacimiento</strong></th>
-                                                                <td><?php echo $user->fechaNacimiento; ?></td>
+                                                                <td><?php echo $date_time->format('d/m/Y'); ?></td>
+                                                                </tr>
+                                                                <tr class="hoverable tr-theme">
+                                                                <th scope="row"><strong>Edad</strong></th>
+                                                                <td><?php echo $edad; ?> Años</td>
                                                                 </tr>
                                                                 <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Talla Camisa</strong></th>
-                                                                <td><?php echo $user->tallaCamisa; ?></td>
+                                                                <td><h5><span class="badge badge-primary hoverable"><?php echo mb_strtoupper($user->tallaCamisa, 'UTF-8'); ?></span></h5></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <a href="http://www.piedradelcanadatr.com/" class="btn btn-theme btn-outline-white hoverable waves-light waves-effect"><i class="fas fa-door-closed mr-2"></i>Regresar a la Página Principal</a>
+                                                        <a href="../../controllers/exit.php" class="btn btn-theme btn-outline-white hoverable waves-light waves-effect"><i class="fas fa-door-closed mr-2"></i>Regresar a la Página Principal</a>
 
                                                 </div>
                                                 
@@ -148,101 +193,7 @@ require_once("../layout/css.php");
                                 </div>
 
                                 <!--Fin datos Persoanles-->
-                                <?php
-                                                }else if($user->estadoIncripcion == 'pago'){
-
-                                                    ?>
-
-                                <div class="col-12 mb-5 content-div">
-                                    <!--Form-->
-                                    <div class="card z-depth-5 hoverable">
-                                        <div class="card-body">
-                                            <!--Header-->
-                                            <div class="text-center">
-                                                <h3 class="white-text"><i class="fas fa-user mr-2"></i>
-                                                ¡Felicidades, estás inscrito en la Piedra Del Canadá: El órigen!
-                                            </h3>
-                                                <hr class="hr-light">
-                                                 
-                                                <h3 class="white-text">Pronto te daremos más información acerca de la carrera</strong></h3>
-
-                                              
-                                                </div>
-   
-                                        </div>
-                                    </div>
-                                    <!--/.Form-->
-                                    
-                                </div>
-
-                                <div class="col-12 mb-5 content-div">
-                                    <!--Form-->
-                                    <div class="card z-depth-5 hoverable">
-                                        <div class="card-body">
-                                            <!--Header-->
-                                            <div class="text-center">
-                                                <h4 class="white-text"><i class="fas fa-user mr-2"></i>
-                                                Tus Datos Personales
-                                            </h4>
-                                                <!--hr class="hr-light"-->
-                                                 
-                                                <div style=" text-align: center; background-color: rgba(255,255,255,0)!important;">
-                                                    <table  class="table table-sm table-hover" >
-                                                            <thead>
-                                                                
-                                                            </thead>
-                                                            <tbody style=" text-align: left;background-color: rgba(0,0,0,0.05)!important;">
-                                                            <tr class="hoverable tr-theme">
-                                                                <th scope="row"><strong>Estado Inscripción </strong></th>
-                                                                <td><?php echo "Pendiente de Pago"; ?></td>
-                                                                
-                                                                </tr>    
-                                                            <tr class="hoverable tr-theme">
-                                                                <th scope="row"><strong>Distancia</strong></th>
-                                                                <td><?php echo $user->distancia; ?></td>
-                                                                
-                                                                </tr>
-                                                                <tr class="hoverable tr-theme">
-                                                                <th scope="row"><strong>Nombre Completo</strong></th>
-                                                                <td><?php echo $user->nombreUsuario.$user->apellidosUsuario; ?></td>
-                                                                </tr>
-                                                                <tr class="hoverable tr-theme">
-                                                                <th scope="row"><strong>Correo Electrónico</strong></th>
-                                                                <td><?php echo $user->correoElectronico; ?></td>
-                                                                </tr>
-                                                                <tr class="hoverable tr-theme">
-                                                                <th scope="row"><strong>Doc. Identidad</strong></th>
-                                                                <td><?php echo $user->tipoIdentificacion.$user->numeroIdentificacion; ?></td>
-                                                                </tr>
-                                                                <tr class="hoverable tr-theme">
-                                                                <th scope="row"><strong>Número Teléfono</strong></th>
-                                                                <td><?php echo $user->telefono; ?></td>
-                                                                </tr>
-                                                                <tr class="hoverable tr-theme">
-                                                                <th scope="row"><strong>Fecha de Nacimiento</strong></th>
-                                                                <td><?php echo $user->fechaNacimiento; ?></td>
-                                                                </tr>
-                                                                <tr class="hoverable tr-theme">
-                                                                <th scope="row"><strong>Talla Camisa</strong></th>
-                                                                <td><?php echo $user->tallaCamisa; ?></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <a href="http://www.piedradelcanadatr.com/" class="btn btn-theme btn-outline-white hoverable waves-light waves-effect"><i class="fas fa-door-closed mr-2"></i>Regresar a la Página Principal</a>
-
-                                                </div>
-                                                
-                                                </div>
-   
-                                        </div>
-                                    </div>
-                                    <!--/.Form-->
-                                 </div>
-                                                    <?php
-                                                    
-                                                }
-                                ?>
-                                
+                              
                             </div>
                         </div>
                     </div>

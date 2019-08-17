@@ -5,7 +5,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="http://www.piedradelcanadatr.com/" >
-        <strong> <i class="fas fa-mountain mr-2"></i>Piedra del Canada: El Órigen</strong>
+        <strong> <img src="../../assets/img/piedradelcanada.png" alt="" class="logo-img">Piedra del Canada: El Órigen</strong>
       </a>
 
       <!-- Collapse -->
