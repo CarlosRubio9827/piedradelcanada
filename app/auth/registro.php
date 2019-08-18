@@ -65,9 +65,9 @@ require_once("../layout/css.php");
                                         <small for="distancia">Distancia que desea correr <span class="obligatorio">*</span></small>   
                                         <select class="form-control" required id="distancia" name="distancia">
                                         <option value="" disabled selected>Selecciona una opción</option>
-                                        <option value="10K">10K - 60.000$</option>
-                                            <option value="21K">21K - 70.000$</option>
-                                            <option value="30K">30K - 90.000$</option>
+                                        <option value="10K">10K - 50.000$</option>
+                                            <option value="21K">21K - 50.000$</option>
+                                            <option value="30K">30K - 50.000$</option>
                                         </select>
                                         </div>
                                 

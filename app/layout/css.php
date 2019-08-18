@@ -4,7 +4,7 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="http://www.piedradelcanadatr.com/" >
+      <a class="navbar-brand" href="#" >
         <strong> <img src="../../assets/img/piedradelcanada.png" alt="" class="logo-img">Piedra del Canada: El Órigen</strong>
       </a>
 

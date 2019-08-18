@@ -3,7 +3,7 @@
     </div>
 <hr class="my-1">
 <div class="pb-2">
-    Desarrollado por Carlos Alberto Rubio
+    Desarrollado por <img src="../../assets/img/dashboard/state/Rupinsisinfondo.png" alt="">
 </div>
 
 <div class="footer-copyright py-3">

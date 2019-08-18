@@ -62,14 +62,14 @@ if($usuario){
     $telefonoContactoEmergencia = $_POST['numeroContactoEmergencia'];
     
     if($distancia == '10K'){
-        $valorPagar = 60000;
+        $valorPagar = 50000;
     }elseif($distancia == '21K'){
-        $valorPagar = 70000;
+        $valorPagar = 50000;
     }else{
-        $valorPagar = 90000;
+        $valorPagar = 50000;
     }
 
-
+ 
     $db = new PDO_Connect;
     $db->connect();
     $res = $db->query("INSERT INTO usuarios (nombreUsuario, apellidosUsuario, distancia, valorPagar, correoElectronico, tipoIdentificacion, numeroIdentificacion, fechaNacimiento, sexo, telefono, pais,departamento, ciudad, tipoSangre, entidadSalud, tallaCamisa,contactoEmergenciaNombre, contactoEmergenciaTelefono, estadoIncripcion, estadoKit) 

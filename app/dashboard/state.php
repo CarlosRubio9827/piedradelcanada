@@ -45,7 +45,16 @@ $edad = $date_time->diff(new DateTime('now', $tz))->y;
                                             <!--Header-->
                                             <div class="text-center">
                                                 <h4 class="white-text"><i class="fas fa-running mr-2"></i>
-                                                <?php echo "Bienvenido ". $user->nombreUsuario." ".$user->apellidosUsuario ;?>
+                                                <?php 
+                                                
+                                                if($user->sexo == 'Femenino'){
+                                                echo "Bienvenida ". $user->nombreUsuario." ".$user->apellidosUsuario ;  
+                                                }else{
+                                                    echo "Bienvenido ". $user->nombreUsuario." ".$user->apellidosUsuario ;
+                                               
+                                                }
+
+                                                ?>
                                             </h4>
                                                 <hr class="hr-light">
 
@@ -65,11 +74,11 @@ $edad = $date_time->diff(new DateTime('now', $tz))->y;
                                                         <ul>
                                                             <li type="circle">
                                                                 <p style="font-size:14px;" align="left">Consigne o transfiera la suma de <span class="resaltar"><?php echo '$'.number_format($user->valorPagar);?></span>
-                                                            (valor de <span class="resaltar"><?php echo $user->distancia; ?></span>)</strong> a la Cuenta de ahorros <span class="resaltar">Banco</span> #<span class="resaltar">000-2323232323</span>, a nombre de <span class="resaltar">Nelso Eduardo Martinez</span>. CC <span class="resaltar">113691790</span>.</p>
+                                                            (valor de <span class="resaltar"><?php echo $user->distancia; ?></span>)</strong> a la Cuenta de ahorros <span class="resaltar">Bancolombia</span> #<span class="resaltar">864-196988-59</span>, a nombre de <span class="resaltar">Nelson Eduardo Martinez</span>. CC <span class="resaltar">6407506</span>.</p>
                                                             </li>
 
                                                             <li type="circle">
-                                                                <p  style="font-size:14px;"align="left">Por último envia un correo a <span class="resaltar">rubiogallegoc@gmail.com</span> con el comprobante de pago para 
+                                                                <p  style="font-size:14px;"align="left">Por último envia un correo a <span class="resaltar">info@rupinsi.com</span> con el comprobante de pago para 
                                                             confirmar tu transacción y activar tu inscripción.</p>
                                                             </li>
                                                         </ul>
@@ -77,7 +86,7 @@ $edad = $date_time->diff(new DateTime('now', $tz))->y;
                                                     <li class="white-text">
                                                         <h6 align="left" > <strong>Pago Presencial</strong></h6>
                                                         <ul>
-                                                            <li><p style="font-size:14px;"  align="left">Comunicate al número de celular <span class="resaltar">3157813181</span> y acuerda un encuentro para terminar tu proceso de inscripción.</p>
+                                                            <li><p style="font-size:14px;"  align="left">Comunicate al número de celular <span class="resaltar">+57 310 6899013</span> y acuerda un encuentro para terminar tu proceso de inscripción.</p>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -180,8 +189,10 @@ if($user->estadoIncripcion == 'registrado'){
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                                        <!--
                                                         <a href="../../controllers/exit.php" class="btn btn-theme btn-outline-white hoverable waves-light waves-effect"><i class="fas fa-door-closed mr-2"></i>Regresar a la Página Principal</a>
-
+                                                        -->
+                                                        
                                                 </div>
                                                 
                                                 </div>
