@@ -21,7 +21,7 @@ else if(@$method == "check_nuip"){
     echo json_encode(array('existe'=> $e->getMessage(), 'status' => 500));
 }
     exit(0);
-}
+} 
 else if(@$method == "login"){ 
     $db = new PDO_Connect;
     $db->connect();
@@ -68,7 +68,7 @@ if($usuario){
     }else{
         $valorPagar = 50000;
     }
-
+ 
  
     $db = new PDO_Connect;
     $db->connect();
@@ -86,5 +86,64 @@ if($usuario){
 
 
 }
+
+}else if(@$method == "loginConsulta"){
+    $db = new PDO_Connect;
+    $db->connect();
+    $email = $_POST['email'];
+    $contraseña = $_POST['contraseña'];
+    $usuario = $db->getRow("SELECT * FROM usuarioconsulta WHERE correoElectronico = ? ",array($email));
+if($usuario){
+    session_start();
+    $_SESSION['usuario'] = json_encode($usuario);   
+    $_SESSION['message'] = "Bienvenido a la consulta de los registros.";
+    $_SESSION['message_type'] = "success";
+    header('Location: ../app/dashboard/estado.php');
+}else{
+    session_start();
+    $_SESSION['message'] = "Credenciales Incorrectos.";
+    $_SESSION['message_type'] = "error";
+    header('Location: ../app/auth/loginConsulta.php');
+}
+
+
+}else if(@$method == "pago"){
+    $db = new PDO_Connect;
+    $db->connect();
+    $idusuarios = $_POST['idusuarios'];
+    $usuario = $db->query("UPDATE `usuarios` SET `estadoIncripcion` = 'pago' WHERE `usuarios`.`idusuarios`  = ? ",array($idusuarios));
+
+if($usuario){
+    session_start();
+    $_SESSION['usuario'] = json_encode($usuario);   
+    $_SESSION['message'] = "Se modificó correctamente el estado de pago.".$idusuarios;
+    $_SESSION['message_type'] = "success";
+    header('Location: ../app/dashboard/estado.php');
+}else{
+    session_start();
+    $_SESSION['message'] = "Error.". $idusuarios;
+    $_SESSION['message_type'] = "error";
+    header('Location: ../app/dashboard/estado.php');
+}
+
+
+}else if(@$method == "entregarKit"){
+    $db = new PDO_Connect;
+    $db->connect();
+    $idusuarios = $_POST['idusuarios'];
+    $usuario = $db->query("UPDATE `usuarios` SET `estadoKit` = 'Entregado' WHERE `usuarios`.`idusuarios`  = ? ",array($idusuarios));
+if($usuario){
+    session_start();
+    $_SESSION['usuario'] = json_encode($usuario);   
+    $_SESSION['message'] = "Se modificó correctamente el estado de entrega de Kit.". $idusuarios;
+    $_SESSION['message_type'] = "success";
+    header('Location: ../app/dashboard/estado.php');
+}else{
+    session_start();
+    $_SESSION['message'] = "Error.". $idusuarios;
+    $_SESSION['message_type'] = "error";
+    header('Location: ../app/dashboard/estado.php');
+}
+
 
 }
