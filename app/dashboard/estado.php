@@ -79,8 +79,8 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                                                                 
                                                                 <a class="nav-link border border-light rounded hoverable waves-light"onclick="confirmarPago();">
                                                                     <form class="nav_formu" id="pago" method="POST" action="../../controllers/auth.php">
-                                                                        <input type="hidden" required value="pago" name="method"></form>
-                                                                        <input type="hidden" required value="<?php echo $row->idusuarios; ?>" name="idusuarios">
+                                                                        <input type="hidden" required value="pago" name="method">
+                                                                        <input type="hidden" required value="<?php echo $row->idusuarios; ?>" name="idusuarios"></form>
                                                                             <i class="fas fa-money-check-alt mr-2"></i> Confirmar Pago 
                                                                 </a>
 
@@ -90,13 +90,20 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                                                                 
                                                                 <a class="nav-link border border-light rounded hoverable waves-light"onclick="entregarKit();">
                                                                     <form class="nav_formu" id="entregarKit" method="POST" action="../../controllers/auth.php">
-                                                                        <input type="hidden" required value="entregarKit" name="method"></form>
-                                                                        <input type="hidden" required value="<?php echo $row->idusuarios; ?>" name="idusuarios">
+                                                                        <input type="hidden" required value="entregarKit" name="method">
+                                                                        <input type="hidden" required value="<?php echo $row->idusuarios; ?>" name="idusuarios"></form>
                                                                             <i class="fas fa-tshirt mr-2"></i> Entregar Kit
                                                                 </a>
                                                                  
                                                                 <?php
-                                                                        }
+                                                                        }else{
+
+                                                                ?>
+                                                                       <h4><span class="badge badge-success hoverable">
+                                                                         Sin Opciones
+                                                                </span></h4>     
+                                                                  
+                                                                  <?php      }
                                                                     }
                                                                     ?>  
                                                                 </td>
