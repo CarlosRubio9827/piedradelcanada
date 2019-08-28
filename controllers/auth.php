@@ -116,12 +116,12 @@ if($usuario){
 if($usuario){
     session_start();
     $_SESSION['usuario'] = json_encode($usuario);   
-    $_SESSION['message'] = "Se modificó correctamente el estado de pago.".$idusuarios.$usuario;
+    $_SESSION['message'] = "Se modificó correctamente el estado de pago.";
     $_SESSION['message_type'] = "success";
     header('Location: ../app/dashboard/estado.php');
 }else{
     session_start();
-    $_SESSION['message'] = "Error.". $idusuarios;
+    $_SESSION['message'] = "Error.";
     $_SESSION['message_type'] = "error";
     header('Location: ../app/dashboard/estado.php');
 }
@@ -135,7 +135,7 @@ if($usuario){
 if($usuario){
     session_start();
     $_SESSION['usuario'] = json_encode($usuario);   
-    $_SESSION['message'] = "Se modificó correctamente el estado de entrega de Kit.".$idusuarios;
+    $_SESSION['message'] = "Se modificó correctamente el estado de entrega de Kit.";
     $_SESSION['message_type'] = "success";
     header('Location: ../app/dashboard/estado.php');
 }else{

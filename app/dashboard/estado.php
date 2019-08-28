@@ -10,7 +10,7 @@ require_once("../../controllers/require/pdo.php");
 <link rel="stylesheet" href="../../assets/css/addons/datatables.css" type="text/css">
 <link rel="stylesheet" href="../../assets/css/addons/bt4-datatables.min.css" type="text/css">
 <link rel="stylesheet" href="../../assets/css/addons/bt4-buttons-datatables.min.css" type="text/css">
- 
+   
 <style type="text/css">
 body {
     background: url("../../assets/img/dashboard/state/background.jpg")repeat center center fixed;
@@ -18,14 +18,67 @@ body {
 }
  
 
-</style> 
+</style>
+
+
+</head>
+<body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#" >
+        <strong> <img src="../../assets/img/piedradelcanada.png" alt="" class="logo-img">Piedra del Canada: El Órigen</strong>
+      </a>
+  
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+                 
+       
+           <li class="nav-item dropdown active">
+                    <a class="nav-link border border-light rounded dropdown-toggle hoverable waves-light" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-running mr-2"></i>Administrador
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right menu-sup" aria-labelledby="navbarDropdownMenuLink">
+                         
+                        <a class="dropdown-item hoverable waves-effect"onclick="salir();">
+                        <form class="nav_formu" id="logout-form" method="POST" action="../../controllers/exit.php">
+                                            <input type="hidden" required value="logout" name="method"></form>
+                                        <i class="fas fa-door-open mr-2"></i> Cerrar sesión
+                                      </a>                      
+                    </div>
+                </li>
+         
+           
+           
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+
 <?php
+
 $db = new PDO_Connect;
 $db->connect();
 
 $usuario = $db->getAll("SELECT * FROM usuarios");
  
 ?>
+
 <!--Intro Section-->
 <section class="section pt-4 white-text"> 
         <div class="mask pattern-0 flex-center"></div>
@@ -33,7 +86,6 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                 <div class="container flex-center white-text">
                     <div class="d-flex align-items-center content-height">
                         <div class="row flex-center pt-5 mt-3">
-                     
                             <div class="col-12 mb-5 content-div white-text">
                                     <!--Form-->
                                 <div class="card z-depth-5 hoverable">
@@ -41,6 +93,7 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                                             <!--Header-->
                                             <div style=" text-align: center; background-color: rgba(255,255,255,0)!important;">
                                                     <table id="ejemplo" class="table table-sm table-hover" >
+
                                                             <thead >
                                                             <tr>
                                                                 <th>Núm Documento</th>
@@ -49,8 +102,7 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                                                                 <th>Talla Camisa</th>
                                                                 <th>Estado Insc</th>
                                                                 <th>Estado Kit</th>
-                                                                <th>Acciones</th>
-                                                                
+                                                                <th>Acciones</th>                 
                                                             </tr>
                                                             </thead>
                                                            
@@ -72,7 +124,8 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                                                                 <td><?php echo $row->tallaCamisa; ?></td>
                                                                 <td><?php echo $row->estadoIncripcion; ?></td>
                                                                 <td><?php echo $row->estadoKit; ?></td>
-                                                                <td><?php 
+                                                                <td>
+                                                                    <?php 
 
                                                                         if($row->estadoIncripcion == "registrado"){
                                                                         ?>
@@ -96,10 +149,10 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                                                                 </a>
                                                                  
                                                                 <?php
-                                                                        }else{
+                                                                        }if($row->estadoIncripcion == "pago" && $row->estadoKit =="Entregado"){
 
                                                                 ?>
-                                                                       <h4><span class="badge badge-success hoverable">
+                                                                       <h4 class="text-center"><span class="badge badge-success hoverable">
                                                                          Sin Opciones
                                                                 </span></h4>     
                                                                   
