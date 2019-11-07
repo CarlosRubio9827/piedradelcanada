@@ -65,9 +65,9 @@ require_once("../layout/css.php");
                                         <small for="distancia">Distancia que desea correr <span class="obligatorio">*</span></small>   
                                         <select class="form-control" required id="distancia" name="distancia">
                                         <option value="" disabled selected>Selecciona una opción</option>
-                                        <option value="10K">10K - 50.000$</option>
-                                            <option value="21K">21K - 50.000$</option>
-                                            <option value="30K">30K - 50.000$</option>
+                                        <option value="10K">10K - 55.000$</option>
+                                            <option value="21K">21K - 65.000$</option>
+                                            <option value="30K">30K - 75.000$</option>
                                         </select>
                                         </div>
                                 
@@ -302,13 +302,28 @@ require_once("../layout/css.php");
                                                 </div>   
 
                                             </div>
+
+
+                                        </div>
+
+
+                                        <div class="text-center">
+                                           <center> <h5 class="white-text" style="max-width:300px;">¿Perteneces a algún grupo?, ingresa el código que te dio tu lider.</h5></center>
+                                            <hr class="hr-light">
                                         </div>
                                         
+                                        <div class="form-row">    
+
+                                            <div class="col-md-12">
+                                            <div class="md-form">
+                                                <input type="text"   id="codigoGrupo" value="" name="codigoGrupo" class="form-control">
+                                                <label for="codigoGrupo" data-error="Error" data-success="Correcto">Código Grupo</label>
+                                                </div>   
+
+                                            </div>
+                                            
+                                        </div>
                                         
-
- 
-
-
                                                 <!-- Grid row -->
                                         <div class="form-row">
                                                 <!-- Grid column -->
@@ -382,6 +397,8 @@ require_once("../layout/js.php");
 <script type="text/javascript" src="../../assets/js/addons/validation/jquery.validate.js"></script>
 <script type="text/javascript" src="../../assets/js/addons/validation/messages_es.js"></script>
 <script type="text/javascript">
+
+
 
 $('#tipoIdentificacion').select2({
         placeholder: "Tipo de identificación *",
@@ -461,22 +478,36 @@ function validar(){
     var confirmarEmail = $("#confirmarEmail").val();
     if(email == confirmarEmail){
 if($("#terminoCondiciones").prop("checked") == true){
+
    var valor =  $("#numeroIdentificacion").val();
+   var codigoGrupo =  $("#codigoGrupo").val();
+
     $.ajax({
   url: "../../controllers/auth.php",
   method: "POST",
-  data: { method: "check_nuip", nuip:valor},
+  data: { method: "check_nuip", nuip:valor, cod:codigoGrupo},
 }).done(function(response) {
     //console.log(response);
     var data = JSON.parse(response);
     if(data.status == 200){
-    if(!data.existe){
+    if(data.existeTodo){
         $("#register_form").submit();
-    }else{
+    }else if(data.existeNuip){
         swal({
   //position: 'top-end',
   type: 'warning',
   title: 'El número de identificación ya ha sido registrado.',
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+    }else if(!data.existeCod){
+        swal({
+  //position: 'top-end',
+  type: 'warning',
+  title: 'El código que ingresaste no pertenece a ningún grupo registrado.',
   showConfirmButton: false,
   toast: true,
   animation: false,
@@ -509,6 +540,61 @@ if($("#terminoCondiciones").prop("checked") == true){
   timer: 3000
 }) 
 });
+
+//Verificacion de codigo de equipo
+
+ /* var codigoGrupo =  $("#codigoGrupo").val();
+    $.ajax({
+  url: "../../controllers/auth.php",
+  method: "POST",
+  data: { method: "check_cod", cod:codigoGrupo},
+}).done(function(response) { 
+    console.log(response);
+    var data = JSON.parse(response);
+    if(data.status == 200){
+    if(data.existe){
+       $("#register_form").submit();    
+    }else if(!data.existe){
+     swal({
+  //position: 'top-end',
+  type: 'warning',
+  title: 'El código que ingresaste no pertenece a ningún grupo registrado.',
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+    }
+    }else{
+        swal({
+  //position: 'top-end',
+  type: 'error',
+  title: data.existe,
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+    }
+    
+}).fail(function( jqXHR, textStatus ) {
+    swal({
+  //position: 'top-end',
+  type: 'error',
+  title: textStatus,
+  showConfirmButton: false,
+  toast: true,
+  animation: false,
+  customClass: 'animated shake',
+  timer: 3000
+}) 
+});  */
+
+//Fin de verificación de código de equipo
+
+
 }else{
     swal({
   //position: 'top-end',

@@ -41,7 +41,7 @@ require_once("../layout/css.php");
                                             <div class="md-form">
                                                 <i class="far fa-envelope prefix white-text"></i>
                                                 <input id="email" type="email" class="form-control validate white-text" name="email" required autofocus maxlength="100">
-                                                <label for="email" data-error="Error" data-success="Correcto">Email <span class="obligatorio">*</span></label>
+                                                <label for="email" data-error="Error" data-success="Correcto">Email <span class="obligatorio">*</span></label>  
                                             </div>
                              
 

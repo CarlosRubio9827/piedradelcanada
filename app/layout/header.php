@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../../assets/favicon.ico" type="image/x-icon"> 
     <title><?php echo $titulo ?></title>
-
+  
     <!-- Styles -->
     <link href="../../assets/css/font-awesome.all.css" rel="stylesheet">
   <!-- Bootstrap core CSS -->

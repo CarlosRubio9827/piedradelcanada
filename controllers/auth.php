@@ -8,20 +8,41 @@ if(@$method == "logout"){
 }
 else if(@$method == "check_nuip"){
    try{
-    $nuip = $_POST['nuip'];
+    $nuip1 = $_POST['nuip'];
+    $cod1 = $_POST['cod'];
     $db = new PDO_Connect;
     $db->connect();
-    $usuario = $db->getRow("SELECT * FROM usuarios WHERE numeroIdentificacion = ? ",array($nuip));
-    if($usuario){
-        echo json_encode(array('existe'=> true, 'status' => 200));
-    }else{
-        echo json_encode(array('existe'=> false, 'status' => 200));
+    $nuip = $db->getRow("SELECT * FROM usuarios WHERE numeroIdentificacion = ? ",array($nuip1));
+    $cod = $db->getRow("SELECT * FROM codigosequipos WHERE codigo = ? ",array($cod1));
+
+    if(!$nuip && $cod){
+        echo json_encode(array('existeTodo'=> true, 'existeNuip'=> true, 'existeCod'=> true, 'status' => 200));
+    }else if($nuip){
+        echo json_encode(array('existeTodo'=> false, 'existeNuip'=> true, 'existeCod'=> false, 'status' => 200));
+    }else if(!$cod){
+        echo json_encode(array('existeTodo'=> false, 'existeNuip'=> false, 'existeCod'=> false, 'status' => 200));
     }
 } catch (Exception $e) {
-    echo json_encode(array('existe'=> $e->getMessage(), 'status' => 500));
+    echo json_encode(array('existeTodo'=> $e->getMessage(), 'status' => 500));
 }
     exit(0);
-} 
+}
+/* else if(@$method == "check_cod"){
+    try{
+        $cod = $_POST['cod'];
+        $db = new PDO_Connect;
+        $db->connect();
+        $usuario = $db->getRow("SELECT * FROM codigosequipos WHERE codigo = ? ",array($cod));
+        if($usuario){
+            echo json_encode(array('existe'=> true, 'status' => 200));
+        }else{
+            echo json_encode(array('existe'=> false, 'status' => 200));
+        }
+    } catch (Exception $e) {
+        echo json_encode(array('existe'=> $e->getMessage(), 'status' => 500));
+    }
+        exit(0);
+}   */
 else if(@$method == "login"){ 
     $db = new PDO_Connect;
     $db->connect();
@@ -29,10 +50,12 @@ else if(@$method == "login"){
     $numeroIdentificacion = $_POST['numeroIdentificacion'];
     $usuario = $db->getRow("SELECT * FROM usuarios WHERE numeroIdentificacion = ? AND correoElectronico = ?",array($numeroIdentificacion,$email));
 if($usuario){
-    session_start();
+    session_start();  
     $_SESSION['usuario'] = json_encode($usuario);   
     $_SESSION['message'] = "Bienvenido a la piedra del canadá: El Órigen.";
     $_SESSION['message_type'] = "success";
+    echo $usuario->nombreUsuario;
+    echo $_SESSION['usuario'];
     header('Location: ../app/dashboard/state.php');
 }else{
     session_start();
@@ -62,20 +85,24 @@ if($usuario){
     $telefonoContactoEmergencia = $_POST['numeroContactoEmergencia'];
     
     if($distancia == '10K'){
-        $valorPagar = 50000;
+        $valorPagar = 55000;
     }elseif($distancia == '21K'){
-        $valorPagar = 50000;
+        $valorPagar = 65000;
     }else{
-        $valorPagar = 50000;
+        $valorPagar = 75000;
     }
- 
+
+    $codigoGrupo = $_POST["codigoGrupo"];
  
     $db = new PDO_Connect;
     $db->connect();
-    $res = $db->query("INSERT INTO usuarios (nombreUsuario, apellidosUsuario, distancia, valorPagar, correoElectronico, tipoIdentificacion, numeroIdentificacion, fechaNacimiento, sexo, telefono, pais,departamento, ciudad, tipoSangre, entidadSalud, tallaCamisa,contactoEmergenciaNombre, contactoEmergenciaTelefono, estadoIncripcion, estadoKit) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    array($nombre,$apellidos,$distancia,$valorPagar,$email,$tipoDocumento,$numeroIdentificacion, $fechaNacimiento,$sexo,$telefono,$pais,$departamento,$ciudad,$tipoSangre,$seguroMedico,$tallaCamisa,$nombreContactoEmergencia,$telefonoContactoEmergencia,$estadoInscripcion,$estadoKit));
 
+    $grupo = $db->getRow("SELECT * FROM `codigosequipos` WHERE codigo = ?",array($codigoGrupo));
+
+    $res = $db->query("INSERT INTO usuarios (nombreUsuario, apellidosUsuario, distancia, valorPagar, correoElectronico, tipoIdentificacion, numeroIdentificacion, fechaNacimiento, sexo, telefono, pais,departamento, ciudad, tipoSangre, entidadSalud, tallaCamisa,contactoEmergenciaNombre, contactoEmergenciaTelefono, estadoIncripcion, estadoKit,grupo) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    array($nombre,$apellidos,$distancia,$valorPagar,$email,$tipoDocumento,$numeroIdentificacion, $fechaNacimiento,$sexo,$telefono,$pais,$departamento,$ciudad,$tipoSangre,$seguroMedico,$tallaCamisa,$nombreContactoEmergencia,$telefonoContactoEmergencia,$estadoInscripcion,$estadoKit,$grupo->nombreEquipo));
+    
     $usuario = $db->getRow("SELECT * FROM usuarios WHERE numeroIdentificacion = ? AND correoElectronico = ?",array($numeroIdentificacion,$email));
 if($usuario){
     session_start();

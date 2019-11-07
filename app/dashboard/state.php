@@ -14,7 +14,7 @@ body {
 }
  
 
-</style> 
+</style>  
 <?php
 require_once("../layout/css.php");
 $db = new PDO_Connect;
@@ -164,6 +164,10 @@ if($user->estadoIncripcion == 'registrado'){
                                                                 <td><?php echo mb_strtoupper($user->nombreUsuario." ".$user->apellidosUsuario, 'UTF-8'); ?></td>
                                                                 </tr>
                                                                 <tr class="hoverable tr-theme">
+                                                                <th scope="row"><strong>Equipo</strong></th>
+                                                                <td><?php echo mb_strtoupper($user->grupo, 'UTF-8'); ?></td>
+                                                                </tr>
+                                                                <tr class="hoverable tr-theme">
                                                                 <th scope="row"><strong>Correo Electrónico</strong></th>
                                                                 <td><?php echo $user->correoElectronico; ?></td>
                                                                 </tr>
@@ -204,6 +208,40 @@ if($user->estadoIncripcion == 'registrado'){
                                 </div>
 
                                 <!--Fin datos Persoanles-->
+<!--0=======================================================================================================-->
+                                <!--Inicio de Hospedaje-->
+
+                                <div class="col-12 mb-5 content-div">
+                                    <!--Form-->
+                                    <div class="card z-depth-5 hoverable">
+                                        <div class="card-body">
+                                            <!--Header-->
+                                            <div class="text-center">
+                                                <h4 class="white-text"><i class="fas fa-bed mr-2"></i>
+                                                        ¿A DÓNDE VAMOS? 
+                                                </h4>
+                                                <hr class="hr-light">
+
+                                                
+                                                 <h5 class="white-text">¡Si esta pregunta te preocupa, <strong> Piedra del Canadá: El órigen</strong> te tiene la solución!</h5>
+
+                                                </div>
+                                                <div class="text-center">
+                                                    <h4 class="white-text">
+                                                    Pasadias, Hospedajes en fincas de alquiler, Alimentación, Guía y lógistica en turismo de la región.
+                                                    </h4>  
+                                             
+                                                    <h3 class="white-text"><span class="resaltar">Para más información </span><span class="badge badge-success hoverable"> <a class="white-text" href="hospedaje.rupinsi.com"> <i class="fas fa-check mr-2"></i> Click Aquí</a>  </span></strong></h3>
+                                                   
+                                                </div>
+                                       
+                                        </div>
+                                    </div>
+                                    <!--/.Form-->
+                                    
+                                </div>
+
+                                <!--Fin Hospedaje-->
                               
                             </div>
                         </div>

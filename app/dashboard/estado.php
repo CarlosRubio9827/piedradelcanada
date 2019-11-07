@@ -117,7 +117,7 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                                                                         </span></h4>
                                                                     <h4><span class="badge badge-success hoverable">
                                                                         </span></h4>
-                                                                </td> -->
+                                                                </td> -->  
                                                                 <td><?php echo $row->numeroIdentificacion; ?></td>
                                                                 <td><?php echo mb_strtoupper($row->nombreUsuario." ".$row->apellidosUsuario, 'UTF-8'); ?></td>
                                                                 <td><?php echo $row->distancia; ?></td>
@@ -140,7 +140,7 @@ $usuario = $db->getAll("SELECT * FROM usuarios");
                                                                         <?php
                                                                         }if($row->estadoKit=="Sin entregar"){
                                                                             ?>
-                                                                
+                                                                  
                                                                 <a class="nav-link border border-light rounded hoverable waves-light"onclick="entregarKit();">
                                                                     <form class="nav_formu" id="entregarKit" method="POST" action="../../controllers/auth.php">
                                                                         <input type="hidden" required value="entregarKit" name="method">
